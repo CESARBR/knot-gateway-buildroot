@@ -2091,4 +2091,9 @@ menu "Text editors and viewers"
 	source "package/vim/Config.in"
 endmenu
 
+menu "KNoT"
+	source "package/knot-protocol-lib/Config.in"
+	source "package/knot-service-app/Config.in"
+endmenu
+
 endmenu
