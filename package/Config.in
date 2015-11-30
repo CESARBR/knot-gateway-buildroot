@@ -1551,4 +1551,9 @@ if BR2_PACKAGE_BUSYBOX_SHOW_OTHERS
 endif
 endmenu
 
+menu "KNoT"
+	source "package/knot-protocol-lib/Config.in"
+	source "package/knot-service-app/Config.in"
+endmenu
+
 endmenu
