@@ -2094,6 +2094,7 @@ endmenu
 menu "KNoT"
 	source "package/knot-protocol-lib/Config.in"
 	source "package/knot-service-app/Config.in"
+	source "package/knot-hal-driver/Config.in"
 endmenu
 
 endmenu

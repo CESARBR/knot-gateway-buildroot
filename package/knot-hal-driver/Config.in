@@ -1,0 +1,7 @@
+config BR2_PACKAGE_KNOT_HAL_DRIVER
+	bool "knot-hal-driver"
+	#depends on BR2_PACKAGE_KNOT_PROTOCOL_LIB
+	#select BR2_PACKAGE_LIBCURL
+	#select BR2_PACKAGE_JSON_C
+	help
+	  TODO
