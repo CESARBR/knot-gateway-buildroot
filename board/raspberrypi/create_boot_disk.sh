@@ -79,10 +79,14 @@ else
     fi
 fi
 echo "Umounting $DEVICE"
-disk1=$DEVICE"1"
-disk2=$DEVICE"2"
-disk3=$DEVICE"3"
-disk4=$DEVICE"4"
+#disk1=$DEVICE"1"
+#disk2=$DEVICE"2"
+#disk3=$DEVICE"3"
+#disk4=$DEVICE"4"
+disk1=$DEVICE"p1"
+disk2=$DEVICE"p2"
+disk3=$DEVICE"p3"
+disk4=$DEVICE"p4"
 
 if (( "$(df | grep $disk1 | wc -l)" == "1" ));
 then 
@@ -113,9 +117,9 @@ echo -e "$disk2\t \trootfs\t256MB\tLinux"
 echo -e "$disk3\t \tdata\t*\tLinux"
 echo "-------------------------------------------"
 
-sudo sfdisk $DEVICE -uM << EOF
-,32,c,*
-,256
+sudo sfdisk $DEVICE << EOF
+,32MiB,c,*
+,256MiB
 ;
 EOF
 
@@ -124,4 +128,4 @@ sudo mkfs.vfat $disk1 -n boot
 sudo mkfs.ext4 $disk2 -L rootfs
 sudo mkfs.ext4 $disk3 -L data
 
-source update_boot_disk.sh $DEVICE
+source board/raspberrypi/update_boot_disk.sh $DEVICE
