@@ -32,10 +32,10 @@ then
     continueIfYes
 fi
 
-disk1=$DEVICE"1"
-disk2=$DEVICE"2"
-disk3=$DEVICE"3"
-disk4=$DEVICE"4"
+disk1=$DEVICE"p1"
+disk2=$DEVICE"p2"
+disk3=$DEVICE"p3"
+disk4=$DEVICE"p4"
 
 if (( "$(df | grep $disk1 | wc -l)" == "1" ));
 then 
