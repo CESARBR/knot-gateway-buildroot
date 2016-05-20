@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_SERVICE_APP_VERSION = ca3a9dde8ffca51b5c65e511ff1e5232cd97bf3a
+KNOT_SERVICE_APP_VERSION = 8fddd8066ebe80aa5a68d58c18edff4642a0a8b7
 KNOT_SERVICE_APP_SITE = https://gitlab.cesar.org.br/cesar-iot/knot-service-source.git
 KNOT_SERVICE_APP_SITE_METHOD = git
 KNOT_SERVICE_APP_INSTALL_STAGING = NO
