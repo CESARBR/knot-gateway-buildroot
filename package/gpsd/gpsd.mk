@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-GPSD_VERSION = 3.15
+GPSD_VERSION = 3.16
 GPSD_SITE = http://download-mirror.savannah.gnu.org/releases/gpsd
 GPSD_LICENSE = BSD-3c
 GPSD_LICENSE_FILES = COPYING
@@ -39,8 +39,10 @@ GPSD_SCONS_OPTS += libgpsmm=no
 endif
 
 # prevents from triggering GCC ICE
+# A bug was reported to the gcc bug tracker:
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68485
 ifeq ($(BR2_microblaze),y)
-GPSD_CFLAGS += -fno-expensive-optimizations
+GPSD_CFLAGS += -fno-expensive-optimizations -fno-schedule-insns
 endif
 
 # Enable or disable Qt binding
@@ -63,6 +65,12 @@ ifeq ($(BR2_PACKAGE_BLUEZ_UTILS),y)
 GPSD_DEPENDENCIES += bluez_utils
 else
 GPSD_SCONS_OPTS += bluez=no
+endif
+
+# If pps-tools is available, build it before so the package can use it
+# (HAVE_SYS_TIMEPPS_H).
+ifeq ($(BR2_PACKAGE_PPS_TOOLS),y)
+GPSD_DEPENDENCIES += pps-tools
 endif
 
 ifeq ($(BR2_PACKAGE_DBUS_GLIB),y)

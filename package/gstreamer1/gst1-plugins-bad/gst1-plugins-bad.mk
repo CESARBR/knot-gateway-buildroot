@@ -4,9 +4,10 @@
 #
 ################################################################################
 
-GST1_PLUGINS_BAD_VERSION = 1.6.1
+GST1_PLUGINS_BAD_VERSION = 1.8.1
 GST1_PLUGINS_BAD_SOURCE = gst-plugins-bad-$(GST1_PLUGINS_BAD_VERSION).tar.xz
 GST1_PLUGINS_BAD_SITE = http://gstreamer.freedesktop.org/src/gst-plugins-bad
+GST1_PLUGINS_BAD_INSTALL_STAGING = YES
 GST1_PLUGINS_BAD_LICENSE_FILES = COPYING COPYING.LIB
 # Unknown and GPL licensed plugins will append to GST1_PLUGINS_BAD_LICENSE if
 # enabled.
@@ -57,9 +58,7 @@ GST1_PLUGINS_BAD_CONF_OPTS += \
 	--disable-mplex \
 	--disable-nas \
 	--disable-ofa \
-	--disable-openal \
 	--disable-openexr \
-	--disable-openjpeg \
 	--disable-openni2 \
 	--disable-pvr \
 	--disable-libvisual \
@@ -432,6 +431,12 @@ else
 GST1_PLUGINS_BAD_CONF_OPTS += --disable-mxf
 endif
 
+ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_NETSIM),y)
+GST1_PLUGINS_BAD_CONF_OPTS += --enable-netsim
+else
+GST1_PLUGINS_BAD_CONF_OPTS += --disable-netsim
+endif
+
 ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_NUVDEMUX),y)
 GST1_PLUGINS_BAD_CONF_OPTS += --enable-nuvdemux
 else
@@ -474,10 +479,11 @@ else
 GST1_PLUGINS_BAD_CONF_OPTS += --disable-removesilence
 endif
 
-ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_RTP),y)
-GST1_PLUGINS_BAD_CONF_OPTS += --enable-rtp
+ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_RTMP),y)
+GST1_PLUGINS_BAD_CONF_OPTS += --enable-rtmp
+GST1_PLUGINS_BAD_DEPENDENCIES += rtmpdump
 else
-GST1_PLUGINS_BAD_CONF_OPTS += --disable-rtp
+GST1_PLUGINS_BAD_CONF_OPTS += --disable-rtmp
 endif
 
 ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_SDI),y)
@@ -538,6 +544,12 @@ ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_VIDEOFILTERS),y)
 GST1_PLUGINS_BAD_CONF_OPTS += --enable-videofilters
 else
 GST1_PLUGINS_BAD_CONF_OPTS += --disable-videofilters
+endif
+
+ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_VIDEOFRAME_AUDIOLEVEL),y)
+GST1_PLUGINS_BAD_CONF_OPTS += --enable-videoframe_audiolevel
+else
+GST1_PLUGINS_BAD_CONF_OPTS += --disable-videoframe_audiolevel
 endif
 
 ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_VIDEOMEASURE),y)
@@ -681,13 +693,6 @@ else
 GST1_PLUGINS_BAD_CONF_OPTS += --disable-mpeg2enc
 endif
 
-ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_MPG123),y)
-GST1_PLUGINS_BAD_CONF_OPTS += --enable-mpg123
-GST1_PLUGINS_BAD_DEPENDENCIES += mpg123
-else
-GST1_PLUGINS_BAD_CONF_OPTS += --disable-mpg123
-endif
-
 ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_MUSEPACK),y)
 GST1_PLUGINS_BAD_CONF_OPTS += --enable-musepack
 GST1_PLUGINS_BAD_DEPENDENCIES += musepack
@@ -702,11 +707,32 @@ else
 GST1_PLUGINS_BAD_CONF_OPTS += --disable-neon
 endif
 
+ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_OPENAL),y)
+GST1_PLUGINS_BAD_CONF_OPTS += --enable-openal
+GST1_PLUGINS_BAD_DEPENDENCIES += openal
+else
+GST1_PLUGINS_BAD_CONF_OPTS += --disable-openal
+endif
+
 ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_OPENCV),y)
 GST1_PLUGINS_BAD_CONF_OPTS += --enable-opencv
 GST1_PLUGINS_BAD_DEPENDENCIES += opencv
 else
 GST1_PLUGINS_BAD_CONF_OPTS += --disable-opencv
+endif
+
+ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_OPENH264),y)
+GST1_PLUGINS_BAD_CONF_OPTS += --enable-openh264
+GST1_PLUGINS_BAD_DEPENDENCIES += libopenh264
+else
+GST1_PLUGINS_BAD_CONF_OPTS += --disable-openh264
+endif
+
+ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_OPENJPEG),y)
+GST1_PLUGINS_BAD_CONF_OPTS += --enable-openjpeg
+GST1_PLUGINS_BAD_DEPENDENCIES += openjpeg
+else
+GST1_PLUGINS_BAD_CONF_OPTS += --disable-openjpeg
 endif
 
 ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_OPUS),y)

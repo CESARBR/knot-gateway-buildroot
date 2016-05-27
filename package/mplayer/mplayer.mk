@@ -98,9 +98,11 @@ else
 MPLAYER_CONF_OPTS += --disable-termcap
 endif
 
-ifeq ($(BR2_PACKAGE_SAMBA_SMBCLIENT),y)
+# mplayer doesn't pick up libsmbclient cflags
+ifeq ($(BR2_PACKAGE_SAMBA4),y)
+MPLAYER_CFLAGS += `$(PKG_CONFIG_HOST_BINARY) --cflags smbclient`
 MPLAYER_CONF_OPTS += --enable-smb
-MPLAYER_DEPENDENCIES += samba
+MPLAYER_DEPENDENCIES += samba4
 else
 MPLAYER_CONF_OPTS += --disable-smb
 endif
@@ -125,9 +127,10 @@ MPLAYER_CONF_OPTS +=  \
 MPLAYER_DEPENDENCIES += libdvdread
 endif
 
+# We intentionally don't pass --enable-dvdnav to let the autodetection
+# find which library to link with.
 ifeq ($(BR2_PACKAGE_LIBDVDNAV),y)
 MPLAYER_CONF_OPTS +=  \
-	--enable-dvdnav \
 	--with-dvdnav-config=$(STAGING_DIR)/usr/bin/dvdnav-config
 MPLAYER_DEPENDENCIES += libdvdnav
 endif
@@ -230,9 +233,12 @@ MPLAYER_CONF_OPTS += --disable-liblzo
 endif
 
 MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_BZIP2),bzip2)
+MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_HAS_LIBGL),libgl)
 MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_LIBTHEORA),libtheora)
 MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_LIBPNG),libpng)
+MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_LIBVPX),libvpx)
 MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_JPEG),jpeg)
+MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_OPUS),opus)
 MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_XLIB_LIBX11),xlib_libX11)
 MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_XLIB_LIBXEXT),xlib_libXext)
 MPLAYER_DEPENDENCIES += $(if $(BR2_PACKAGE_XLIB_LIBXINERAMA),xlib_libXinerama)
