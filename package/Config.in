@@ -1435,6 +1435,7 @@ endif
 	source "package/lrzsz/Config.in"
 	source "package/macchanger/Config.in"
 	source "package/memcached/Config.in"
+	source "package/meshblu/Config.in"
 	source "package/mii-diag/Config.in"
 	source "package/minidlna/Config.in"
 	source "package/mjpg-streamer/Config.in"
