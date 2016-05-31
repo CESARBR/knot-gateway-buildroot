@@ -1,0 +1,8 @@
+config BR2_PACKAGE_MESHBLU
+        bool "libfoo"
+        #depends on BR2_PACKAGE_MONGODB
+        depends on BR2_PACKAGE_NODEJS
+        help
+          Machine-to-machine instant messaging platform for the internet of things #IoT.
+          
+          http://developer.octoblu.com
