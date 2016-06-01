@@ -1,5 +1,5 @@
 config BR2_PACKAGE_MESHBLU
-        bool "libfoo"
+        bool "meshblu"
         #depends on BR2_PACKAGE_MONGODB
         depends on BR2_PACKAGE_NODEJS
         help
