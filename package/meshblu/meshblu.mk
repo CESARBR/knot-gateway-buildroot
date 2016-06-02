@@ -9,7 +9,7 @@ MESHBLU_SITE = $(call github,octoblu,meshblu,$(MESHBLU_VERSION))
 MESHBLU_DEPENDENCIES = nodejs
 
 define MESHBLU_INSTALL_TARGET_CMDS
-        $(NPM) install $(@D)
+        cd $(@D) && $(NPM) install -g
 endef
 
 $(eval $(generic-package))
