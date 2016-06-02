@@ -109,13 +109,13 @@ echo "Ready to create partition table for $DEVICE"
 echo "-------------------------------------------"
 echo -e "device\t\tBoot\tName\tSize\tSystem"
 echo -e "$disk1\t*\tboot\t32MB\tW95 FAT32(LBA)"
-echo -e "$disk2\t \trootfs\t256MB\tLinux"
+echo -e "$disk2\t \trootfs\t1GB\tLinux"
 echo -e "$disk3\t \tdata\t*\tLinux"
 echo "-------------------------------------------"
 
-sudo sfdisk $DEVICE -uM << EOF
-,32,c,*
-,256
+sudo sfdisk /dev/sdb << EOF
+,64000,c,*
+,512000
 ;
 EOF
 
