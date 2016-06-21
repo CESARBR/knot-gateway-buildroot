@@ -102,8 +102,9 @@ echo "Copying bootloader files..."
 if [[ "$BOOT_MOUNT_DIR" != "" ]];
 then
     sudo rm -rf $BOOT_MOUNT_DIR/*
+    sudo cp output/images/bcm2709-rpi-2-b.dtb $BOOT_MOUNT_DIR/.
     sudo cp output/images/rpi-firmware/* $BOOT_MOUNT_DIR/.
-    sudo cp output/images/zImage $BOOT_MOUNT_DIR/.
+    sudo cp output/images/kernel-marked/zImage $BOOT_MOUNT_DIR/.
     ls -la $BOOT_MOUNT_DIR
 else
     echo "Error on boot directory mounting point: $BOOT_MOUNT_DIR"
