@@ -79,10 +79,10 @@ else
     fi
 fi
 echo "Umounting $DEVICE"
-disk1=$DEVICE"1"
-disk2=$DEVICE"2"
-disk3=$DEVICE"3"
-disk4=$DEVICE"4"
+disk1=${DEVICE/*mmcblk*/${DEVICE}p}"1"
+disk2=${DEVICE/*mmcblk*/${DEVICE}p}"2"
+disk3=${DEVICE/*mmcblk*/${DEVICE}p}"3"
+disk4=${DEVICE/*mmcblk*/${DEVICE}p}"4"
 
 if (( "$(df | grep $disk1 | wc -l)" == "1" ));
 then 
@@ -113,7 +113,7 @@ echo -e "$disk2\t \trootfs\t1GB\tLinux"
 echo -e "$disk3\t \tdata\t*\tLinux"
 echo "-------------------------------------------"
 
-sudo sfdisk /dev/sdb << EOF
+sudo sfdisk $DEVICE << EOF
 ,64000,c,*
 ,1024000
 ;
@@ -124,5 +124,5 @@ sudo mkfs.vfat $disk1 -n boot
 sudo mkfs.ext4 $disk2 -L rootfs
 sudo mkfs.ext4 $disk3 -L data
 
-source update_boot_disk.sh $DEVICE
+source update_boot_disk.sh ${DEVICE/*mmcblk*/${DEVICE}p}
 
