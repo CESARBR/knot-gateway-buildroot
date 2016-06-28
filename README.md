@@ -33,7 +33,7 @@ download the packages' sources.
 
 You should base your work on this defconfig:
 
-1. run `make knot_defconfig`
+1. run `make knot_gateway_defconfig`
 2. run `make menuconfig`
 3. select the extra packages you wish to compile
 4. run `make`
