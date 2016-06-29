@@ -5,7 +5,7 @@
 ################################################################################
 
 KNOT_PROTOCOL_LIB_VERSION = acd6b1d59903dfdd4c963a59fea42f00b2813e6d
-KNOT_PROTOCOL_LIB_SITE = git@gitlab.cesar.org.br:cesar-iot/knot-protocol-source.git
+KNOT_PROTOCOL_LIB_SITE = https://gitlab.cesar.org.br/cesar-iot/knot-protocol-source.git
 KNOT_PROTOCOL_LIB_SITE_METHOD = git
 KNOT_PROTOCOL_LIB_INSTALL_STAGING = YES
 KNOT_PROTOCOL_LIB_INSTALL_TARGET = NO

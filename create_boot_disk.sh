@@ -2,6 +2,14 @@
 
 DEVICE=$1
 
+BOOTFS_SIZE=$(stat -L --printf="%s" output/images/boot.vfat)
+BOOTFS_SIZE_MB=$((BOOTFS_SIZE/(1024*1024)))
+BOOTFS_SIZE_SFDISK=$((BOOTFS_SIZE/512))
+
+ROOTFS_SIZE=$(stat -L --printf="%s" output/images/rootfs.ext4)
+ROOTFS_SIZE_MB=$((((ROOTFS_SIZE/(1024*1024*256))+1)*256))
+ROOTFS_SIZE_SFDISK=$((ROOTFS_SIZE_MB*1024*2))
+
 function continueIfYes() {
     echo "Do you want to continue? [y|N]"
     read resp
@@ -108,20 +116,18 @@ fi
 echo "Ready to create partition table for $DEVICE"
 echo "-------------------------------------------"
 echo -e "device\t\tBoot\tName\tSize\tSystem"
-echo -e "$disk1\t*\tboot\t32MB\tW95 FAT32(LBA)"
-echo -e "$disk2\t \trootfs\t1GB\tLinux"
+echo -e "$disk1\t*\tboot\t${BOOTFS_SIZE_MB}MB\tW95 FAT32(LBA)"
+echo -e "$disk2\t \trootfs\t${ROOTFS_SIZE_MB}MB\tLinux"
 echo -e "$disk3\t \tdata\t*\tLinux"
 echo "-------------------------------------------"
 
 sudo sfdisk $DEVICE << EOF
-,64000,c,*
-,1024000
+,$BOOTFS_SIZE_SFDISK,c,*
+,$ROOTFS_SIZE_SFDISK
 ;
 EOF
 
 echo "Formatting partitions..."
-sudo mkfs.vfat $disk1 -n boot
-sudo mkfs.ext4 $disk2 -L rootfs
 sudo mkfs.ext4 $disk3 -L data
 
 source update_boot_disk.sh ${DEVICE/*mmcblk*/${DEVICE}p}

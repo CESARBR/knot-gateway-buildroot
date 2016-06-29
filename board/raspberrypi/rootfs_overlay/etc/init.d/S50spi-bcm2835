@@ -1,16 +1,16 @@
 #!/bin/sh
 #
-# spi        Starts spi-bcm2708.
+# spi        Starts spi-bcm2835.
 #
 
 start() {
 	printf "Starting spi-bcm2708: "
-	modprobe spi-bcm2708
+	modprobe spi-bcm2835
 	echo "OK"
 }
 stop() {
 	printf "Stopping spi-bcm2708: "
-	rmmod spi-bcm2708
+	rmmod spi-bcm2835
 	echo "OK"
 }
 restart() {
