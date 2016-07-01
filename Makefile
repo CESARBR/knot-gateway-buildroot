@@ -24,6 +24,8 @@
 # You shouldn't need to mess with anything beyond this point...
 #--------------------------------------------------------------
 
+export GIT_SSL_NO_VERIFY = 1
+
 # Trick for always running with a fixed umask
 UMASK = 0022
 ifneq ($(shell umask),$(UMASK))

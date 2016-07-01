@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_HAL_DRIVER_VERSION = c9d1bbaabf3a4190722ef801746733b44dd1717e
+KNOT_HAL_DRIVER_VERSION = 2016.07-rc2
 KNOT_HAL_DRIVER_SITE = https://gitlab.cesar.org.br/cesar-iot/knot-hal-source.git
 KNOT_HAL_DRIVER_SITE_METHOD = git
 KNOT_HAL_DRIVER_INSTALL_STAGING = YES
