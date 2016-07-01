@@ -20,10 +20,10 @@ then
     continueIfYes
 fi
 
-disk1=$DEVICE"1"
-disk2=$DEVICE"2"
-disk3=$DEVICE"3"
-disk4=$DEVICE"4"
+disk1=${DEVICE/*mmcblk*/${DEVICE}p}"1"
+disk2=${DEVICE/*mmcblk*/${DEVICE}p}"2"
+disk3=${DEVICE/*mmcblk*/${DEVICE}p}"3"
+disk4=${DEVICE/*mmcblk*/${DEVICE}p}"4"
 
 if (( "$(df | grep $disk1 | wc -l)" == "1" ));
 then 

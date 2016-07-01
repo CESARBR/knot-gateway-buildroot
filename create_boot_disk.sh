@@ -130,5 +130,5 @@ EOF
 echo "Formatting partitions..."
 sudo mkfs.ext4 $disk3 -L data
 
-source update_boot_disk.sh ${DEVICE/*mmcblk*/${DEVICE}p}
+source update_boot_disk.sh $DEVICE
 
