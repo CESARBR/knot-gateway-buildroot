@@ -24,6 +24,8 @@
 # You shouldn't need to mess with anything beyond this point...
 #--------------------------------------------------------------
 
+export GIT_SSL_NO_VERIFY = 1
+
 # Delete default rules. We don't use them. This saves a bit of time.
 .SUFFIXES:
 
