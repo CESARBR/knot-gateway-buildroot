@@ -40,10 +40,6 @@ then
     continueIfYes
 fi
 
-echo "WARNING! You are going to format $DEVICE!"
-echo "All data on $DEVICE will be lost!"
-continueIfYes
-
 disk_mounted=$(df | grep $DEVICE | wc -l)
 if (( "$disk_mounted" == "0" ));
 then
@@ -130,5 +126,5 @@ EOF
 echo "Formatting partitions..."
 sudo mkfs.ext4 $disk3 -L data
 
-source update_boot_disk.sh $DEVICE
+source `dirname $0`/update_boot_disk.sh $DEVICE
 
