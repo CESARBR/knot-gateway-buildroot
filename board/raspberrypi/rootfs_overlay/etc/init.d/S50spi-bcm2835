@@ -4,12 +4,12 @@
 #
 
 start() {
-	printf "Starting spi-bcm2708: "
+	printf "Starting spi-bcm2835: "
 	modprobe spi-bcm2835
 	echo "OK"
 }
 stop() {
-	printf "Stopping spi-bcm2708: "
+	printf "Stopping spi-bcm2835: "
 	rmmod spi-bcm2835
 	echo "OK"
 }
