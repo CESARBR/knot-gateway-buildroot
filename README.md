@@ -26,7 +26,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 How to Buid it
 ----------------
-The knot_defconfig configuration is a minimal configuration with
+The knot_gateway_defconfig configuration is a minimal configuration with
 all that is required to bring the KNoT platform on RaspberryPi. 
 Note: you will need to have access to the network, since Buildroot will
 download the packages' sources.
