@@ -121,22 +121,23 @@ The root file system size depends on the applications, libraries, etc that you i
 We created two scripts that automates the process of preparing and writing those files on SDCard.  
 The fisrt one is `create_boot_disk.sh` that will partition the sdcard and format the volumes according to its file systems (FAT32 and ext4).  
 The second is the `update_boot_disk.sh` that will write the files to each volume (boot and rootfs).
+These scripts are located in path `board/raspberrypi/`, relative from the _knot-gateway-buildroot_ folder.
 
 If you have new SDCard, you will need to create the partition first:
 
 ```
-$ ./create_boot_disk.sh /dev/sdX
+$ ./board/raspberrypi/create_boot_disk.sh /dev/sdX
 ```
-where `sdX` is the device corresponding to your SDCard in your system, such as `sdb` or `sdc`. 
+where `sdX` is the device corresponding to your SDCard in your system, such as `sdb` or `sdc` (or also `mmcblkX`).
 > Note: create_boot_disk.sh will repartition and formating your entire disk. This means that all **INFORMATION** on it will be **LOST**.
 Please use it with care!
 
 If your SDCard was previously used with this system and you just need to update the files resulted from a fresh build, you can use:
 
 ```
-$ ./update_boot_disk.sh /dev/sdX
+$ ./board/raspberrypi/update_boot_disk.sh /dev/sdX
 ``` 
-where `sdX` is the device corresponding to your SDCard in your system, such as `sdb` or `sdc`. 
+where `sdX` is the device corresponding to your SDCard in your system, such as `sdb` or `sdc` (or also `mmcblkX`).
 > Note: update_boot_disk.sh will ERASE the first 3 partitions of the disk. This means that all **INFORMATION** on it will be **LOST**.
 Please use it with care!
 
