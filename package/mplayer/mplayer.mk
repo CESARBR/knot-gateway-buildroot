@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MPLAYER_VERSION = 1.2
+MPLAYER_VERSION = 1.3.0
 MPLAYER_SOURCE = MPlayer-$(MPLAYER_VERSION).tar.xz
 MPLAYER_SITE = http://www.mplayerhq.hu/MPlayer/releases
 MPLAYER_DEPENDENCIES = host-pkgconf
@@ -123,7 +123,7 @@ MPLAYER_CONF_OPTS += --disable-libcdio
 # autodetection find which library to link with.
 ifeq ($(BR2_PACKAGE_LIBDVDREAD),y)
 MPLAYER_CONF_OPTS +=  \
-	--with-dvdread-config=$(STAGING_DIR)/usr/bin/dvdread-config
+	--with-dvdread-config="$(PKG_CONFIG_HOST_BINARY) dvdread"
 MPLAYER_DEPENDENCIES += libdvdread
 endif
 
@@ -131,7 +131,7 @@ endif
 # find which library to link with.
 ifeq ($(BR2_PACKAGE_LIBDVDNAV),y)
 MPLAYER_CONF_OPTS +=  \
-	--with-dvdnav-config=$(STAGING_DIR)/usr/bin/dvdnav-config
+	--with-dvdnav-config="$(PKG_CONFIG_HOST_BINARY) dvdnav"
 MPLAYER_DEPENDENCIES += libdvdnav
 endif
 
@@ -172,6 +172,14 @@ endif
 ifeq ($(BR2_PACKAGE_LIBMPEG2),y)
 MPLAYER_DEPENDENCIES += libmpeg2
 MPLAYER_CONF_OPTS += --disable-libmpeg2-internal
+endif
+
+# We intentionally don't pass --enable-mpg123, to let the
+# autodetection find which library to link with.
+ifeq ($(BR2_PACKAGE_MPG123),y)
+MPLAYER_DEPENDENCIES += mpg123
+else
+MPLAYER_CONF_OPTS += --disable-mpg123
 endif
 
 ifeq ($(BR2_PACKAGE_TREMOR),y)
@@ -254,6 +262,10 @@ ifeq ($(BR2_ARM_CPU_ARMV6)$(BR2_ARM_CPU_ARMV7A),y)
 MPLAYER_CONF_OPTS += --enable-armv6
 endif
 
+ifeq ($(BR2_aarch64),y)
+MPLAYER_CONF_OPTS += --enable-armv8
+endif
+
 ifeq ($(BR2_ARM_SOFT_FLOAT),)
 ifeq ($(BR2_ARM_CPU_HAS_NEON),y)
 MPLAYER_CONF_OPTS += --enable-neon
@@ -268,10 +280,62 @@ MPLAYER_CFLAGS += -fomit-frame-pointer
 endif
 
 ifeq ($(BR2_X86_CPU_HAS_MMX),y)
-MPLAYER_CONF_OPTS += --yasm=$(HOST_DIR)/usr/bin/yasm
+MPLAYER_CONF_OPTS += \
+	--enable-mmx \
+	--yasm=$(HOST_DIR)/usr/bin/yasm
 MPLAYER_DEPENDENCIES += host-yasm
 else
-MPLAYER_CONF_OPTS += --yasm=''
+MPLAYER_CONF_OPTS += \
+	--disable-mmx \
+	--yasm=''
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_SSE),y)
+MPLAYER_CONF_OPTS += --enable-sse
+else
+MPLAYER_CONF_OPTS += --disable-sse
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_SSE2),y)
+MPLAYER_CONF_OPTS += --enable-sse2
+else
+MPLAYER_CONF_OPTS += --disable-sse2
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_SSE3),y)
+MPLAYER_CONF_OPTS += --enable-sse3
+else
+MPLAYER_CONF_OPTS += --disable-sse3
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_SSSE3),y)
+MPLAYER_CONF_OPTS += --enable-ssse3
+else
+MPLAYER_CONF_OPTS += --disable-ssse3
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_SSE4),y)
+MPLAYER_CONF_OPTS += --enable-sse4
+else
+MPLAYER_CONF_OPTS += --disable-sse4
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_SSE42),y)
+MPLAYER_CONF_OPTS += --enable-sse42
+else
+MPLAYER_CONF_OPTS += --disable-sse42
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_AVX),y)
+MPLAYER_CONF_OPTS += --enable-avx
+else
+MPLAYER_CONF_OPTS += --disable-avx
+endif
+
+ifeq ($(BR2_X86_CPU_HAS_AVX2),y)
+MPLAYER_CONF_OPTS += --enable-avx2
+else
+MPLAYER_CONF_OPTS += --disable-avx2
 endif
 
 define MPLAYER_CONFIGURE_CMDS
