@@ -33,7 +33,7 @@ download the packages' sources.
 
 You should base your work on this defconfig:
 
-1. run `make knot_gateway_defconfig`
+1. run `make knot_gateway` or `make BR2_GATEWAY_HARDWARE=configs/<raspberrypi_model>_defconfig knot_gateway` to select a diferent model from the original. There are four different raspberry pi defconfigs to choose.
 2. run `make menuconfig`
 3. select the extra packages you wish to compile
 4. run `make`
@@ -97,7 +97,7 @@ Result of the build
 After building, you should obtain this tree:
 
     output/images/
-    +-- rootfs.tar
+    +-- rootfs.ext2
     +-- rpi-firmware
     |   +-- bootcode.bin
     |   +-- config.txt
@@ -107,7 +107,7 @@ After building, you should obtain this tree:
     |   +-- start.elf
     +-- zImage
 
-The rootfs.tar file contains (as the name suggests) the root file system for your linux setup.
+The rootfs.ext2 file contains (as the name suggests) the root file system for your linux setup.
 The rpi-firmware directory contains the RaspberryPi bootloader and all the files that it needs.
 The zImage is the Linux kernel image.
 
