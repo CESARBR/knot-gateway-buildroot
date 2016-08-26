@@ -25,6 +25,7 @@
 #--------------------------------------------------------------
 
 export GIT_SSL_NO_VERIFY = 1
+BR2_GATEWAY_HARDWARE ?= configs/raspberrypi_defconfig
 
 # Delete default rules. We don't use them. This saves a bit of time.
 .SUFFIXES:
@@ -943,6 +944,13 @@ savedefconfig: $(BUILD_DIR)/buildroot-config/conf prepare-kconfig
 		--savedefconfig=$(if $(DEFCONFIG),$(DEFCONFIG),$(CONFIG_DIR)/defconfig) \
 		$(CONFIG_CONFIG_IN)
 	@$(SED) '/BR2_DEFCONFIG=/d' $(if $(DEFCONFIG),$(DEFCONFIG),$(CONFIG_DIR)/defconfig)
+
+knot_gateway: $(BUILD_DIR)/buildroot-config/conf outputmakefile $(CONFIG_DIR)/.config_merged
+	@$(COMMON_CONFIG_ENV) $< --defconfig=$(CONFIG_DIR)/.config_merged $(CONFIG_CONFIG_IN)
+
+$(CONFIG_DIR)/.config_merged: configs/knot_gateway_defconfig
+	support/kconfig/merge_config.sh -m -O $(CONFIG_DIR) $(BR2_GATEWAY_HARDWARE) configs/knot_gateway_defconfig
+	mv $(CONFIG_DIR)/.config $@
 
 .PHONY: defconfig savedefconfig
 
