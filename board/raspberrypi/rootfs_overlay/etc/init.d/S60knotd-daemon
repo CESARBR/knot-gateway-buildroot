@@ -1,20 +1,20 @@
 #!/bin/sh
 #
-# Start nrfd
+# Start KNoTd
 #
 
-DAEMON=/etc/nrfd_respawn
+DAEMON=/etc/knot/knotd_respawn
 
 start() {
-        printf "Starting nrfd: "
+        printf "Starting KNoTd: "
         $DAEMON &
-        echo $! > /tmp/nrfd.pid
+        echo $! > /tmp/knotd.pid
         echo "OK"
 }
 
 stop() {
-        printf "Stopping nrfd: "
-        kill `cat /tmp/nrfd.pid`
+        printf "Stopping KNoTd: "
+        kill `cat /tmp/knotd.pid`
         echo "OK"
 }
 
