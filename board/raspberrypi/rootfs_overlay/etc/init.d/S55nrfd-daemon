@@ -3,19 +3,24 @@
 # Start nrfd
 #
 
-DAEMON=/etc/knot/nrfd_respawn
-
 start() {
         printf "Starting nrfd: "
-        $DAEMON &
-        echo $! > /tmp/nrfd.pid
-        echo "OK"
+        if /etc/knot/start.sh nrfd
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
 }
 
 stop() {
         printf "Stopping nrfd: "
-        kill `cat /tmp/nrfd.pid`
-        echo "OK"
+        if /etc/knot/stop.sh nrfd
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
 }
 
 restart() {

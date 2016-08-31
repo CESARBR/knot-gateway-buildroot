@@ -1,9 +1,0 @@
-#!/bin/sh
-
-while true
-
-do
-
-        /usr/local/bin/knotd
-
-done
