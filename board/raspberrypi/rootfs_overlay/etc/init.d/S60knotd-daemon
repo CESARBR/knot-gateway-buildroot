@@ -3,19 +3,24 @@
 # Start KNoTd
 #
 
-DAEMON=/etc/knot/knotd_respawn
-
 start() {
         printf "Starting KNoTd: "
-        $DAEMON &
-        echo $! > /tmp/knotd.pid
-        echo "OK"
+        if /etc/knot/start.sh knotd
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
 }
 
 stop() {
         printf "Stopping KNoTd: "
-        kill `cat /tmp/knotd.pid`
-        echo "OK"
+        if /etc/knot/stop.sh knotd
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
 }
 
 restart() {
