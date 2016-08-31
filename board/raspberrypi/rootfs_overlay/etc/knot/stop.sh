@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PIDFILE = /tmp/$1.pid
+PIDFILE=/tmp/$1.pid
 
 if [ -x $PIDFILE ]
 then

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-DAEMON = /usr/local/bin/$1 
+DAEMON=/usr/local/bin/$1 
 
-if [ -x $DAEMON ]
+if [ -e $DAEMON ]
 then
 	while true
 	do
