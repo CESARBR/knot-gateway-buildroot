@@ -1560,7 +1560,6 @@ menu "Networking applications"
 	source "package/lrzsz/Config.in"
 	source "package/macchanger/Config.in"
 	source "package/memcached/Config.in"
-	source "package/meshblu/Config.in"
 	source "package/mii-diag/Config.in"
 	source "package/minidlna/Config.in"
 	source "package/minissdpd/Config.in"
@@ -1823,6 +1822,7 @@ menu "KNoT"
 	source "package/knot-protocol-lib/Config.in"
 	source "package/knot-service-app/Config.in"
 	source "package/knot-hal-driver/Config.in"
+	source "package/knot-fog/Config.in"
 endmenu
 
 endmenu
