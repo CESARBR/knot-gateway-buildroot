@@ -2,7 +2,7 @@
 
 DAEMON=/usr/local/bin/$1 
 
-if [ -e $DAEMON ]
+if [ -x $DAEMON ]
 then
 	while true
 	do
