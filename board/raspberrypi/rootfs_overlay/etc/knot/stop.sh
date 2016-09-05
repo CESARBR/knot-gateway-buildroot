@@ -2,7 +2,7 @@
 
 PIDFILE=/tmp/$1.pid
 
-if [ -x $PIDFILE ]
+if [ -e $PIDFILE ]
 then
     kill -15 -`cat $PIDFILE`
     rm $PIDFILE
