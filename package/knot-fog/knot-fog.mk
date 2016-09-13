@@ -15,8 +15,8 @@ endef
 
 define KNOT_FOG_INSTALL_INIT_SCRIPT
 	$(INSTALL) -D -m 0644 $(KNOT_FOG_PKGDIR)/S65knot-fog-daemon $(TARGET_DIR)/etc/init.d/
-	mkdir $(TARGET_DIR)/usr/local/
-	mkdir $(TARGET_DIR)/usr/local/bin/
+	mkdir -p $(TARGET_DIR)/usr/local/
+	mkdir -p $(TARGET_DIR)/usr/local/bin/
 	$(INSTALL) -D -m 0644 $(KNOT_FOG_PKGDIR)/knot-fog $(TARGET_DIR)/usr/local/bin/
 endef
 
