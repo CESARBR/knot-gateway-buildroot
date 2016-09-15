@@ -1,6 +1,7 @@
 config BR2_PACKAGE_KNOT_SERVICE_APP
 	bool "knot-service-app"
 	depends on BR2_PACKAGE_KNOT_PROTOCOL_LIB
+	depends on BR2_PACKAGE_LIBWEBSOCKETS
 	select BR2_PACKAGE_LIBCURL
 	select BR2_PACKAGE_JSON_C
 	help
