@@ -4,16 +4,23 @@
 #
 ################################################################################
 
-KNOT_PROTOCOL_LIB_VERSION = 832f0f270d15edbcbaa732d67b1303d8cbcb06de
+KNOT_PROTOCOL_LIB_VERSION = 66f11aa1aeab9f47a89780cff008b86893496fb4
 KNOT_PROTOCOL_LIB_SITE = https://github.com/CESARBR/knot-protocol-source.git
 KNOT_PROTOCOL_LIB_SITE_METHOD = git
 KNOT_PROTOCOL_LIB_INSTALL_STAGING = YES
 KNOT_PROTOCOL_LIB_INSTALL_TARGET = NO
+KNOT_SERVICE_APP_AUTORECONF = YES
+KNOT_SERVICE_APP_CONF_OPTS = --enable-maintainer-mode --enable-debug --sysconfdir=/etc
 
-define KNOT_PROTOCOL_LIB_INSTALL_STAGING_CMDS
-	$(INSTALL) -D -m 0644 $(@D)/src/proto-app/knot_types.h $(STAGING_DIR)/usr/include/
-	$(INSTALL) -D -m 0644 $(@D)/src/proto-app/knot_proto_app.h $(STAGING_DIR)/usr/include/
-	$(INSTALL) -D -m 0644 $(@D)/src/proto-net/knot_proto_net.h $(STAGING_DIR)/usr/include/
+define KNOT_PROTOCOL_LIB_BOOTSTRAP
+	cd $(@D) &&  ./bootstrap 
 endef
 
-$(eval $(generic-package))
+KNOT_PROTOCOL_LIB_POST_PATCH_HOOKS += KNOT_PROTOCOL_LIB_BOOTSTRAP
+
+define KNOT_PROTOCOL_LIB_INSTALL_STAGING_CMDS
+	$(INSTALL) -D -m 0644 $(@D)/src/knot_types.h $(STAGING_DIR)/usr/include/
+	$(INSTALL) -D -m 0644 $(@D)/src/knot_protocol.h $(STAGING_DIR)/usr/include/
+endef
+
+$(eval $(autotools-package))
