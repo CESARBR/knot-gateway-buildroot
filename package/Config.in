@@ -1823,6 +1823,7 @@ menu "KNoT"
 	source "package/knot-service-app/Config.in"
 	source "package/knot-hal-driver/Config.in"
 	source "package/knot-fog/Config.in"
+	source "package/knot-web/Config.in"
 endmenu
 
 endmenu
