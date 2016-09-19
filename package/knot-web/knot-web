@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# Run KNoT-fog
+#
+
+cd /usr/local/bin/knot-web-*/
+node server.js
