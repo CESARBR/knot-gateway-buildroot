@@ -1,0 +1,6 @@
+config BR2_PACKAGE_KNOT_WEB
+        bool "knot-web"
+        #depends on BR2_PACKAGE_MONGODB
+        depends on BR2_PACKAGE_NODEJS
+        help
+          TODO
