@@ -10,7 +10,12 @@ KNOT_FOG_SITE = https://github.com/CESARBR/knot-cloud-source.git
 KNOT_FOG_DEPENDENCIES = nodejs
 
 define KNOT_FOG_INSTALL_TARGET_CMDS
-        cd $(@D) && $(NPM) install -g
+	rm -rf $(TARGET_DIR)/usr/local/bin/knot-fog-source
+	mkdir -p $(TARGET_DIR)/usr/local/
+	mkdir -p $(TARGET_DIR)/usr/local/bin/
+	mkdir -p $(TARGET_DIR)/usr/local/bin/knot-fog-source
+	cd $(@D) && $(NPM) install
+	cp -R $(@D)/* $(TARGET_DIR)/usr/local/bin/knot-fog-source
 endef
 
 define KNOT_FOG_INSTALL_INIT_SCRIPT
