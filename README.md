@@ -141,5 +141,25 @@ where `sdX` is the device corresponding to your SDCard in your system, such as `
 > Note: update_boot_disk.sh will ERASE the first 3 partitions of the disk. This means that all **INFORMATION** on it will be **LOST**.
 Please use it with care!
 
+Let's see how to access your KNoT gateway
+----------------------------------------
+
+To access the KNoT gateway of your Network open your browser and type [knot.local:8080](http://knot.local:8080) in your URL bar.
+
+Possible troubleshootings
+-------------------------
+
+### I've typed knot.local:8080 on the URL bar but my browser returned that it can't find the page ###
+
+In the KNoT gateway it is installed a service that allows to the find it with a logical address (knot.local) without let you know the physical address (an address like 192.168.x.y), but sometimes it could happen that this service is blocked by either the router firewall or the computer firewall.
+
+To solve that problem you have to:
+
+A - Go to a linux machine on same local network and execute the followed command on terminal ```$ arp-scan -l | grep b8:27:eb```
+
+B - Go to the KNoT gateway then put a screen and a keyboard, login as user root and password root, type the followed command ```hostname -i``` (it's important that hostname is write lowercase).
+
+This command will return the IP address the router have assigned to the KNot gateway; now that you know the IP address, go to the browser and type the IP address instead of knot.local. For example, imagine it returned 192.168.1.4, go to the browser and on the URL bar type: 192.168.1.4:8080
+
 
 **And finally, enjoy your brand new KNoT Gateway platform!**
