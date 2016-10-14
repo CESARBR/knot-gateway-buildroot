@@ -15,3 +15,6 @@ if [ -h ${TARGET_DIR}/var/log ]; then
 	unlink ${TARGET_DIR}/var/log
 fi
 mkdir -p -m 775 ${TARGET_DIR}/var/log/
+
+# Change hostname
+echo "knot" > ${TARGET_DIR}/etc/hostname
