@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_WEB_VERSION = dc6f7285f83c4f4373adaa2dc1a269562389ae81
+KNOT_WEB_VERSION = master
 KNOT_WEB_SITE_METHOD = git
 KNOT_WEB_SITE = https://github.com/CESARBR/knot-gateway-webui.git
 KNOT_WEB_DEPENDENCIES = nodejs
