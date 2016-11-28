@@ -6,7 +6,7 @@ It is based on buildroot 2014.11 version for RaspberryPi hardware.
 Copyright (C) 1999-2005 by Erik Andersen <andersen@codepoet.org>  
 Copyright (C) 2006-2014 by the Buildroot developers <buildroot@uclibc.org>  
 Copyright (C) 2014 by the Buildroot developers <buildroot@buildroot.org>  
-Copyright (C) 2015 by the C.E.S.A.R KNoT developers <knot-l@cesar.org.br>  
+Copyright (C) 2016 by the C.E.S.A.R KNoT developers <knot-devel@cesar.org.br>
 
 
 This program is free software; you can redistribute it and/or modify
