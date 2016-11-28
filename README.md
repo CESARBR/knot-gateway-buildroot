@@ -88,7 +88,7 @@ $ make HOSTCC=gcc-4.3 uclibc-menuconfig
 $ make HOSTCC=gcc-4.3 busybox-menuconfig
 ```
 Please feed suggestions, bug reports, insults, and bribes back to the
-knot mailing list: <knot-l@cesar.org.br>
+knot mailing list: <knot-devel@cesar.org.br>
 
 
 Result of the build
@@ -161,5 +161,9 @@ B - Go to the KNoT gateway then put a screen and a keyboard, login as user root 
 
 This command will return the IP address the router have assigned to the KNot gateway; now that you know the IP address, go to the browser and type the IP address instead of knot.local. For example, imagine it returned 192.168.1.4, go to the browser and on the URL bar type: 192.168.1.4:8080
 
+Contact
+-------
 
-**And finally, enjoy your brand new KNoT Gateway platform!**
+KNoT mailing list: <knot-devel@cesar.org.br>
+
+-**And finally, enjoy your brand new KNoT Gateway platform!**
