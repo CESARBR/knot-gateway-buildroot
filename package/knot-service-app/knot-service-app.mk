@@ -15,13 +15,13 @@ KNOT_SERVICE_APP_CONF_OPTS = --prefix=/usr/local --exec-prefix=/usr/local --enab
 KNOT_SERVICE_APP_CONF_ENV = CFLAGS="-I$(@D)/../knot-protocol-lib-66f11aa1aeab9f47a89780cff008b86893496fb4/src" LIBS="$(@D)/../knot-protocol-lib-66f11aa1aeab9f47a89780cff008b86893496fb4/src/libknotprotocol.a"
 
 define KNOT_SERVICE_APP_BOOTSTRAP
-	cd $(@D) &&  ./bootstrap 
+	cd $(@D) &&  ./bootstrap
 endef
 
 KNOT_SERVICE_APP_PRE_CONFIGURE_HOOKS += KNOT_SERVICE_APP_BOOTSTRAP
 
 define KNOT_SERVICE_APP_INSTALL_INIT_SCRIPT
-	$(INSTALL) -D -m 0644 $(KNOT_SERVICE_APP_PKGDIR)/S60knotd-daemon $(TARGET_DIR)/etc/init.d/
+	$(INSTALL) -D -m 0755 $(KNOT_SERVICE_APP_PKGDIR)/S60knotd-daemon $(TARGET_DIR)/etc/init.d/
 endef
 
 KNOT_SERVICE_APP_POST_INSTALL_TARGET_HOOKS += KNOT_SERVICE_APP_INSTALL_INIT_SCRIPT
