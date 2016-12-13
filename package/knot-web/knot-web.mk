@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_WEB_VERSION = master
+KNOT_WEB_VERSION = KNOT-v01.00-rc01
 KNOT_WEB_SITE_METHOD = git
 KNOT_WEB_SITE = https://github.com/CESARBR/knot-gateway-webui.git
 KNOT_WEB_DEPENDENCIES = nodejs
@@ -14,6 +14,7 @@ define KNOT_WEB_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/usr/local/bin/
 	cd $(@D) && $(NPM) install
 	cp -R $(@D) $(TARGET_DIR)/usr/local/bin/
+	mkdir -p $(TARGET_DIR)/etc/knot
 	$(INSTALL) -D -m 0644 $(@D)/app/config/gatewayConfig.json $(TARGET_DIR)/etc/knot
 	$(INSTALL) -D -m 0644 $(@D)/app/config/keys.json $(TARGET_DIR)/etc/knot
 endef
