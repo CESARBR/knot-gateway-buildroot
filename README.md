@@ -23,6 +23,79 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
+System requirements
+-------------------
+
+Buildroot is designed to run on Linux systems.
+
+While Buildroot itself will build most host packages it needs for the compilation, certain standard Linux utilities are expected to be already installed on the host system. Below you will find an overview of the mandatory and optional packages (note that package names may vary between distributions).
+
+### 1. Mandatory packages ###
+
+Build tools:
+
+which
+sed
+make (version 3.81 or any later)
+binutils
+build-essential (only for Debian based systems)
+gcc (version 2.95 or any later)
+g++ (version 2.95 or any later)
+bash
+patch
+gzip
+bzip2
+perl (version 5.8.7 or any later)
+tar
+cpio
+python (version 2.6 or any later)
+unzip
+rsync
+libtoolize
+aclocal
+
+Source fetching tools:
+
+wget
+
+### 2. Optional packages ###
+
+Configuration interface dependencies:
+
+For these libraries, you need to install both runtime and development data, which in many distributions are packaged separately. The development packages typically have a -dev or -devel suffix.
+
+ncurses5 to use the menuconfig interface
+qt4 to use the xconfig interface
+glib2, gtk2 and glade2 to use the gconfig interface
+
+Source fetching tools:
+
+In the official tree, most of the package sources are retrieved using wget from ftp, http or https locations. A few packages are only available through a version control system. Moreover, Buildroot is capable of downloading sources via other tools, like rsync or scp (refer to Chapter 19, Download infrastructure for more details). If you enable packages using any of these methods, you will need to install the corresponding tool on the host system:
+
+bazaar
+cvs
+git
+mercurial
+rsync
+scp
+subversion
+
+Java-related packages, if the Java Classpath needs to be built for the target system:
+
+The javac compiler
+The jar tool
+
+Documentation generation tools:
+
+asciidoc, version 8.6.3 or higher
+w3m
+python with the argparse module (automatically present in 2.7+ and 3.2+)
+dblatex (required for the pdf manual only)
+
+Graph generation tools:
+
+graphviz to use graph-depends and <pkg>-graph-depends
+python-matplotlib to use graph-build
 
 How to Buid it
 ----------------
