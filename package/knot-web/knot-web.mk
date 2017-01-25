@@ -17,6 +17,8 @@ define KNOT_WEB_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/etc/knot
 	$(INSTALL) -D -m 0644 $(@D)/app/config/gatewayConfig.json $(TARGET_DIR)/etc/knot
 	$(INSTALL) -D -m 0644 $(@D)/app/config/keys.json $(TARGET_DIR)/etc/knot
+	rm -f $(TARGET_DIR)/usr/local/bin/knot-web*/app/config/gatewayConfig.json
+	rm -f $(TARGET_DIR)/usr/local/bin/knot-web*/app/config/keys.json
 endef
 
 define KNOT_WEB_INSTALL_INIT_SCRIPT
