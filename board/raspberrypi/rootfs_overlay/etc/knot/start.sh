@@ -1,13 +1,15 @@
 #!/bin/sh
 
-DAEMON=/usr/local/bin/$1 
+DAEMON=/usr/local/bin/$1
+RUN=/usr/local/bin/$@
+
 echo "void" > /tmp/$1.pid
 
 if [ -x $DAEMON ]
 then
 	while [ -e /tmp/$1.pid ]
 	do
-		$DAEMON
+		$RUN
 	done &
 	echo $! > /tmp/$1.pid
 else
