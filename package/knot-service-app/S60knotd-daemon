@@ -5,7 +5,7 @@
 
 start() {
         printf "Starting KNoTd: "
-        if /etc/knot/start.sh knotd
+        if /etc/knot/start.sh knotd -n
         then
           echo "OK"
         else

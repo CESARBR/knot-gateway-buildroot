@@ -5,7 +5,7 @@
 
 start() {
         printf "Starting nrfd: "
-        if /etc/knot/start.sh nrfd
+        if /etc/knot/start.sh nrfd -n
         then
           echo "OK"
         else
