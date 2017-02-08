@@ -14,6 +14,7 @@ define KNOT_FOG_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/usr/local/
 	mkdir -p $(TARGET_DIR)/usr/local/bin/
 	mkdir -p $(TARGET_DIR)/usr/local/bin/knot-fog-source
+	mkdir -p $(TARGET_DIR)/data/db
 	cd $(@D) && $(NPM) install
 	cp -R $(@D)/* $(TARGET_DIR)/usr/local/bin/knot-fog-source
 endef
