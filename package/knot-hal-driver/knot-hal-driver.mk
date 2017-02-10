@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_HAL_DRIVER_VERSION = aead5bb108c270a8e0ae4d3951c94437641a87ed
+KNOT_HAL_DRIVER_VERSION = master
 KNOT_HAL_DRIVER_SITE = https://github.com/CESARBR/knot-hal-source.git
 KNOT_HAL_DRIVER_SITE_METHOD = git
 KNOT_HAL_DRIVER_INSTALL_STAGING = NO
@@ -22,6 +22,10 @@ endif
 endif
 KNOT_HAL_DRIVER_CONF_OPTS += --prefix=/usr/local --exec-prefix=/usr/local
 KNOT_HAL_DRIVER_DEPENDENCIES = libglib2
+
+define KNOT_HAL_DRIVER_INSTALL_TARGET_CMDS
+	$(INSTALL) -D -m 0755 $(@D)/src/nrfd/config/* $(TARGET_DIR)/etc/dbus-1/system.d/
+endef
 
 define KNOT_HAL_DRIVER_INSTALL_INIT_SCRIPT
 	$(INSTALL) -D -m 0755 $(KNOT_HAL_DRIVER_PKGDIR)/S70nrfd-daemon $(TARGET_DIR)/etc/init.d/
