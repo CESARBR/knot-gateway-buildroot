@@ -2097,6 +2097,8 @@ menu "KNoT"
 	source "package/knot-hal-driver/Config.in"
 	source "package/knot-fog/Config.in"
 	source "package/knot-web/Config.in"
+	source "package/lora-gateway/Config.in"
+	source "package/lora-pkt-forwarder/Config.in"
 endmenu
 
 endmenu
