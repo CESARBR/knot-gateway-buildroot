@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LORA_PKT_FORWARDER
+    bool "lora-pkt-forwarder"
+	depends on BR2_PACKAGE_LORA_GATEWAY
+	help
+		TODO
