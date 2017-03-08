@@ -1,15 +1,13 @@
 #!/bin/sh
 #
-# Setup KNoT-fog mongo instance
+# Setup MongoDB instance
 #
 
 start() {
         printf "Starting MongoDB: "
-        mongod --storageEngine mmapv1 &
-        if [ -s /data/db/mongod.lock ]; then
+        if /etc/knot/start.sh mongod
+        then
           echo "OK"
-          echo "Creating MONGODB_URI environment variable"
-          export MONGODB_URI="mongodb://localhost:27017/knot_fog"
         else
           echo "FAIL"
         fi
@@ -17,10 +15,8 @@ start() {
 
 stop() {
         printf "Stopping MongoDB: "
-        PIDFILE=/data/db/mongod.lock
-        if [ -s $PIDFILE ]; then
-          PID=`cat $PIDFILE`
-          kill -15 $PID
+        if /etc/knot/stop.sh mongod
+        then
           echo "OK"
         else
           echo "FAIL"
