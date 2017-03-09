@@ -15,7 +15,7 @@ define KNOT_FOG_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/usr/local/bin/
 	mkdir -p $(TARGET_DIR)/usr/local/bin/knot-fog-source
 	cd $(@D) && $(NPM) install
-	cp -R $(@D)/* $(TARGET_DIR)/usr/local/bin/knot-fog-source
+	cp -R $(@D)/. $(TARGET_DIR)/usr/local/bin/knot-fog-source
 endef
 
 define KNOT_FOG_INSTALL_INIT_SCRIPT
