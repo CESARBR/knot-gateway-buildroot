@@ -71,4 +71,6 @@ define MONGODB_INSTALL_INIT_SCRIPT
 	$(INSTALL) -D -m 0755 $(MONGODB_PKGDIR)/mongod $(TARGET_DIR)/usr/local/bin/
 endef
 
+MONGODB_POST_INSTALL_TARGET_HOOKS += MONGODB_INSTALL_INIT_SCRIPT
+
 $(eval $(generic-package))
