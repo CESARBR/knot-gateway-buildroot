@@ -3,7 +3,7 @@
 # Run MongoDB
 #
 
-mongod --storageEngine mmapv1 &
+mongod --smallfiles --storageEngine mmapv1 &
 echo $! > /tmp/mongod.pid
 
 PIDFILE=/tmp/mongod.pid
