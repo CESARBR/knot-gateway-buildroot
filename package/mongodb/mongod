@@ -3,6 +3,12 @@
 # Run MongoDB
 #
 
+#Recover from unclean shutdown
+if [ -s /data/db/mongod.lock ]
+then
+	mongod --repair
+fi
+
 mongod --smallfiles --storageEngine mmapv1 &
 echo $! > /tmp/mongod.pid
 
