@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_SERVICE_APP_VERSION = KNOT-v01.02-rc06
+KNOT_SERVICE_APP_VERSION = KNOT-v01.02-rc07
 KNOT_SERVICE_APP_SITE = https://github.com/CESARBR/knot-service-source.git
 KNOT_SERVICE_APP_SITE_METHOD = git
 KNOT_SERVICE_APP_INSTALL_STAGING = NO
@@ -12,7 +12,7 @@ KNOT_SERVICE_APP_INSTALL_TARGET = YES
 KNOT_SERVICE_APP_DEPENDENCIES = libglib2 json-c libcurl knot-protocol-lib libwebsockets
 KNOT_SERVICE_APP_AUTORECONF = YES
 KNOT_SERVICE_APP_CONF_OPTS = --prefix=/usr/local --exec-prefix=/usr/local --enable-debug --disable-optimization
-KNOT_SERVICE_APP_CONF_ENV = CFLAGS="-I$(@D)/../knot-protocol-lib-KNOT-v01.02-rc06/src" LIBS="$(@D)/../knot-protocol-lib-KNOT-v01.02-rc06/src/libknotprotocol.a"
+KNOT_SERVICE_APP_CONF_ENV = CFLAGS="-I$(@D)/../knot-protocol-lib-KNOT-v01.02-rc07/src" LIBS="$(@D)/../knot-protocol-lib-KNOT-v01.02-rc07/src/libknotprotocol.a"
 
 define KNOT_SERVICE_APP_BOOTSTRAP
 	cd $(@D) &&  ./bootstrap
