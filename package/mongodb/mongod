@@ -8,7 +8,7 @@ if [ -s /data/db/mongod.lock ]
 then
 	mongod --repair
 fi
-
+mkdir -p /data/db
 mongod --smallfiles --storageEngine mmapv1 &
 echo $! > /tmp/mongod.pid
 
