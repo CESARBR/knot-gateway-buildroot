@@ -26,7 +26,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 System requirements
 -------------------
 
-Buildroot is designed to run on Linux systems.
+Buildroot is designed to run on Linux systems. If you are using a Mac, there is an experimental Vagrant box configured to build the KNoT Gateway (see below).
 
 While Buildroot itself will build most host packages it needs for the compilation, certain standard Linux utilities are expected to be already installed on the host system. Below you will find an overview of the mandatory and optional packages (note that package names may vary between distributions).
 
@@ -96,6 +96,29 @@ Graph generation tools:
 
 graphviz to use graph-depends and <pkg>-graph-depends
 python-matplotlib to use graph-build
+
+### Use a Vagrant box (experimental) ###
+
+This repository provides a Vagrant box running Ubuntu with all the packages needed to build the KNoT Gateway. 
+Before running it, install [Vagrant](https://www.vagrantup.com) and [VirtualBox](https://www.virtualbox.org).
+
+To create the box, run:
+
+```shell
+$ vagrant up
+```
+
+It will ask for adminstrator credentials, required to map this folder inside the box using NFS.
+
+To enter the box, run:
+
+```shell
+$ vagrant ssh
+```
+
+There are two folders in the home folder:
+* `buildroot`: maps the repository root inside the box. It is accessing the host file system using NFS.
+* `output`: where the build output will be located. If the host OS is a Mac OS X or Windows, the build must be made out-of-tree (see instructions in the next section), because of limitations of their file systems.
 
 How to Buid it
 ----------------
