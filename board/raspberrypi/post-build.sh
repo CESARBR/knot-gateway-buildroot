@@ -23,3 +23,6 @@ echo "knot" > ${TARGET_DIR}/etc/hostname
 echo "KNoT - KNoT Network of Things" > ${TARGET_DIR}/etc/knot/.version
 echo "Built on $(date --rfc-3339='seconds')" >> ${TARGET_DIR}/etc/knot/.version
 echo "$(grep -rhiZ ^KNOT_.*_VERSION $(pwd)/package)" >> ${TARGET_DIR}/etc/knot/.version
+
+# Create alias
+echo "alias knot='cat /etc/knot/.version'" >> ${TARGET_DIR}/etc/profile
