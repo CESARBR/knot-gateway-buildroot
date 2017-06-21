@@ -61,7 +61,6 @@ define MONGODB_INSTALL_TARGET_CMDS
 		$(MONGODB_SCONS_OPTS) \
 		--prefix=$(TARGET_DIR)/usr \
 		install)
-		echo "/dev/mmcblk0p3 /data ext4 defaults 0 0" >> $(TARGET_DIR)/etc/fstab
 		mkdir -p $(TARGET_DIR)/data/db
 endef
 
