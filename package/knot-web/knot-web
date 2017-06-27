@@ -4,4 +4,4 @@
 #
 
 cd /usr/local/bin/knot-web-*/
-node server.js
+npm start
