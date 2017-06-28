@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_FOG_VERSION = knot_cloud
+KNOT_FOG_VERSION = KNOT-v01.02-rc12
 KNOT_FOG_SITE_METHOD = git
 KNOT_FOG_SITE = https://github.com/CESARBR/knot-cloud-source.git
 KNOT_FOG_DEPENDENCIES = nodejs
