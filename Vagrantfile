@@ -3,7 +3,7 @@ CORES = ENV['BUILDROOT_VAGRANT_CORES'] || "2"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
-  
+
   config.disksize.size = "20GB"
 
   config.vm.provider "virtualbox" do |v|
@@ -26,6 +26,6 @@ Vagrant.configure("2") do |config|
       wget unzip \
       cachefilesd
     echo "RUN=yes" | sudo tee /etc/default/cachefilesd
-    mkdir -p /home/ubuntu/output
+    sudo -u ubuntu mkdir -p /home/ubuntu/output
   SHELL
 end
