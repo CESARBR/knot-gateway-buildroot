@@ -1,2 +1,5 @@
 # https://download.gnome.org/sources/glib/2.50/glib-2.50.3.sha256sum
 sha256  82ee94bf4c01459b6b00cb9db0545c2237921e3060c0b74cff13fbc020cfd999  glib-2.50.3.tar.xz
+
+# http://ftp.gnome.org/pub/gnome/sources/glib/2.52/glib-2.52.3.sha256sum
+sha256 25ee7635a7c0fcd4ec91cbc3ae07c7f8f5ce621d8183511f414ded09e7e4e128  glib-2.52.3.tar.xz
