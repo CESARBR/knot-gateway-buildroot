@@ -16,6 +16,8 @@ define KNOT_FOG_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/usr/local/bin/knot-fog-source
 	cd $(@D) && $(NPM) install
 	cp -R $(@D)/. $(TARGET_DIR)/usr/local/bin/knot-fog-source
+	sed -i "/knotInstanceType/c\  knotInstanceType: 'gateway'," $(TARGET_DIR)/usr/local/bin/knot-fog-source/config.js
+	sed -i "/databaseUrl: process.env.MONGODB_URI/c\    databaseUrl: process.env.MONGODB_URI || 'mongodb:\/\/localhost:27017\/knot_fog'/" $(TARGET_DIR)/usr/local/bin/knot-fog-source/config.js
 endef
 
 define KNOT_FOG_INSTALL_INIT_SCRIPT
