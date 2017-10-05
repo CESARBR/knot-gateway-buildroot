@@ -945,7 +945,7 @@ savedefconfig: $(BUILD_DIR)/buildroot-config/conf prepare-kconfig
 		$(CONFIG_CONFIG_IN)
 	@$(SED) '/BR2_DEFCONFIG=/d' $(if $(DEFCONFIG),$(DEFCONFIG),$(CONFIG_DIR)/defconfig)
 
-knot_gateway: $(BUILD_DIR)/buildroot-config/conf outputmakefile
+knot_gateway: $(BUILD_DIR)/buildroot-config/conf prepare-kconfig
 	@support/kconfig/merge_config.sh -m -O $(CONFIG_DIR) $(BR2_GATEWAY_HARDWARE) configs/knot_gateway_defconfig
 	@$(COMMON_CONFIG_ENV) $< --defconfig=$(CONFIG_DIR)/.config $(CONFIG_CONFIG_IN)
 
