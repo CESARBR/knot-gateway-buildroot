@@ -6,10 +6,12 @@
 start() {
 	printf "Starting spi-bcm2835: "
 	modprobe spi-bcm2835
+	modprobe spidev
 	echo "OK"
 }
 stop() {
 	printf "Stopping spi-bcm2835: "
+	rmmod spidev
 	rmmod spi-bcm2835
 	echo "OK"
 }
