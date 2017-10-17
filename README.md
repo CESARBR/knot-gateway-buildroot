@@ -102,6 +102,12 @@ python-matplotlib to use graph-build
 This repository provides a Vagrant box running Ubuntu with all the packages needed to build the KNoT Gateway. 
 Before running it, install [Vagrant](https://www.vagrantup.com) and [VirtualBox](https://www.virtualbox.org).
 
+Then, install a Vagrant plugin to resize disks in VirtualBox:
+
+```shell
+$ vagrant plugin install vagrant-disksize
+```
+
 To create the box, run:
 
 ```shell
