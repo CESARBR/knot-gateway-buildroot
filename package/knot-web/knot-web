@@ -4,4 +4,13 @@
 #
 
 cd /usr/local/bin/knot-web-*/
-npm start
+npm start &
+echo $! > /tmp/knot-web.pid
+
+PIDFILE=/tmp/knot-web.pid
+PID=`cat $PIDFILE`
+
+while [ -e /proc/$PID ]
+do
+        sleep 1
+done
