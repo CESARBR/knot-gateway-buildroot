@@ -4,9 +4,18 @@ PIDFILE=/tmp/$1.pid
 
 if [ -e $PIDFILE ]
 then
-	PID=`cat $PIDFILE`
+	PPID=`cat $PIDFILE`
 	rm $PIDFILE
-	kill -15 $PID
+	PIDS=$PPID
+	CHILD=`ps -eo pid,ppid|awk ' $2 == '$PPID' { print $1; }'`
+
+	while [ "$CHILD" ]
+	do
+		CHILD=`ps -eo pid,ppid|awk ' $2 == '$PPID' { print $1 }'`
+		PIDS="$PIDS $CHILD"
+		PPID=$CHILD
+	done
+	kill -15 $PIDS
 else
 	exit 1
 fi
