@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MONGODB_VERSION_BASE = 3.3.4
+MONGODB_VERSION_BASE = 3.2.17
 MONGODB_VERSION = r$(MONGODB_VERSION_BASE)
 MONGODB_SITE = $(call github,mongodb,mongo,$(MONGODB_VERSION))
 
@@ -16,7 +16,7 @@ MONGODB_DEPENDENCIES = host-scons
 MONGODB_SCONS_TARGETS = mongod mongos
 
 MONGODB_SCONS_ENV = CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" \
-	-j"$(PARALLEL_JOBS)"
+	-j"$(PARALLEL_JOBS)" --mmapv1=on
 
 MONGODB_SCONS_OPTS = --disable-warnings-as-errors
 
