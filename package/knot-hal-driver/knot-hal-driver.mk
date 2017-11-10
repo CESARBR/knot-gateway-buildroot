@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_HAL_DRIVER_VERSION = KNOT-v01.03-rc02
+KNOT_HAL_DRIVER_VERSION =master
 KNOT_HAL_DRIVER_SITE = https://github.com/CESARBR/knot-hal-source.git
 KNOT_HAL_DRIVER_SITE_METHOD = git
 KNOT_HAL_DRIVER_INSTALL_STAGING = NO
