@@ -16,9 +16,6 @@ if [ -h ${TARGET_DIR}/var/log ]; then
 fi
 mkdir -p -m 775 ${TARGET_DIR}/var/log/
 
-# Change hostname
-echo "knot" > ${TARGET_DIR}/etc/hostname
-
 # Create knot version file
 echo "KNoT - KNoT Network of Things" > ${TARGET_DIR}/etc/knot/.version
 echo "Built on $(date --rfc-3339='seconds')" >> ${TARGET_DIR}/etc/knot/.version
