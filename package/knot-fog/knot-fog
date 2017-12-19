@@ -3,7 +3,7 @@
 # Run KNoT-fog
 #
 
-node /usr/local/bin/knot-fog-source/server.js &
+NODE_ENV=production node /usr/local/bin/knot-fog-source/server.js &
 echo $! > /tmp/knot-fog.pid
 
 PIDFILE=/tmp/knot-fog.pid
