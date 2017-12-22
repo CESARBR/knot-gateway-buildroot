@@ -15,6 +15,8 @@ trim() {
 	dtbo=$target
 }
 
+cp -uv "$(dirname $0)/knot_overlays"/*.dtbo "${BINARIES_DIR}/rpi-firmware/overlays/"
+
 while test -n "$2"; do
 	if [ `expr substr $2 1 6` = "--add-" ]; then
 		dtbo=${2#*--add-}
