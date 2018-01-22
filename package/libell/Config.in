@@ -1,0 +1,9 @@
+config BR2_PACKAGE_LIBELL
+        bool "libell"
+         depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_3
+	 depends on BR2_TOOLCHAIN_USES_GLIBC
+	help
+	  The Embedded Linux Library (ELL) provides core,
+	  low-level functionality for system daemons.
+
+	  https://01.org/ell
