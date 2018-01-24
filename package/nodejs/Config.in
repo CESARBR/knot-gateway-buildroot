@@ -38,6 +38,20 @@ config BR2_PACKAGE_NODEJS
 
 if BR2_PACKAGE_NODEJS
 
+# Starting with 0.12.x, on ARM, V8 (the JS engine)
+# now requires an armv6+ and a VFPv2+.
+config BR2_PACKAGE_NODEJS_V8_ARCH_SUPPORTS
+	bool
+	# On supported architectures other than ARM, no special requirement
+	default y if !BR2_arm
+	# On ARM, at least ARMv6+ with VFPv2+ is needed
+	default y if !BR2_ARM_CPU_ARMV5 && BR2_ARM_CPU_HAS_VFPV2
+
+config BR2_PACKAGE_NODEJS_VERSION_STRING
+	string
+	default "9.4.0"		if BR2_PACKAGE_NODEJS_V8_ARCH_SUPPORTS
+	default "0.10.48"
+
 config BR2_PACKAGE_NODEJS_NPM
 	bool "NPM for the target"
 	select BR2_PACKAGE_OPENSSL
