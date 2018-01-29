@@ -29,13 +29,6 @@
 	};
 
 	fragment@1 {
-		target = <&spidev0>;
-		__overlay__ {
-			status = "disabled";
-		};
-	};
-
-	fragment@2 {
 		target = <&gpio>;
 		__overlay__ {
 			lowpan0_pins: lowpan0_pins {
