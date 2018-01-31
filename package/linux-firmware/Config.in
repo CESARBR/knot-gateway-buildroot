@@ -44,6 +44,11 @@ config BR2_PACKAGE_LINUX_FIRMWARE_QCOM_ADRENO
 	help
 	  Firmware files for Qualcomm Adreno GPU firmware
 
+config BR2_PACKAGE_LINUX_FIRMWARE_QCOM
+	bool "Qualcomm video card firmware"
+	help
+	  Firmware files for Qualcomm/Snapdragon video cards.
+
 endmenu # Video
 
 menu "Bluetooth firmware"
