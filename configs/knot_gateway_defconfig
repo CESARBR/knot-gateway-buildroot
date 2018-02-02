@@ -7,7 +7,7 @@ BR2_TARGET_GENERIC_ROOT_PASSWD="root"
 BR2_TARGET_GENERIC_GETTY_PORT="tty1"
 BR2_ROOTFS_OVERLAY="board/raspberrypi2/rootfs_overlay"
 BR2_ROOTFS_POST_IMAGE_SCRIPT="board/raspberrypi/post-image-knot.sh"
-BR2_ROOTFS_POST_SCRIPT_ARGS="--add-spi0-cs --add-spi1-2cs --add-at86rf233-spi1-overlay"
+BR2_ROOTFS_POST_SCRIPT_ARGS="--add-spi0-cs --add-spi1-2cs,cs0_pin=5,cs1_pin=6 --add-at86rf233-spi1-overlay"
 BR2_LINUX_KERNEL_VERSION="custom"
 BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/raspberrypi/knot_linux_defconfig"
 BR2_LINUX_KERNEL_CUSTOM_TARBALL=y
