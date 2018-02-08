@@ -1,0 +1,8 @@
+config BR2_PACKAGE_KNOT_NETWORK_NRF24
+	bool "knot-network-nrf24"
+	depends on BR2_PACKAGE_KNOT_PROTOCOL_LIB
+	depends on BR2_PACKAGE_KNOT_HAL_DRIVER
+	depends on BR2_PACKAGE_LIBELL
+	select BR2_PACKAGE_JSON_C
+	help
+	  TODO

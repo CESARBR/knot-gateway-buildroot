@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Start nrfd
+#
+
+start() {
+        printf "Starting nrfd: "
+        if /etc/knot/start.sh nrfd -n
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+stop() {
+        printf "Stopping nrfd: "
+        if /etc/knot/stop.sh nrfd
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+restart() {
+        stop
+        start
+}
+
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

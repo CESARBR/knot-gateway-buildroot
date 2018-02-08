@@ -23,11 +23,4 @@ endif
 KNOT_HAL_DRIVER_CONF_OPTS += --prefix=/usr/local --exec-prefix=/usr/local
 KNOT_HAL_DRIVER_DEPENDENCIES = libglib2
 
-define KNOT_HAL_DRIVER_INSTALL_INIT_SCRIPT
-	$(INSTALL) -D -m 0755 $(KNOT_HAL_DRIVER_PKGDIR)/S75nrfd-daemon $(TARGET_DIR)/etc/init.d/
-	$(INSTALL) -D -m 0755 $(@D)/src/nrfd/config/* $(TARGET_DIR)/etc/dbus-1/system.d/
-endef
-
-KNOT_HAL_DRIVER_POST_INSTALL_TARGET_HOOKS += KNOT_HAL_DRIVER_INSTALL_INIT_SCRIPT
-
 $(eval $(autotools-package))
