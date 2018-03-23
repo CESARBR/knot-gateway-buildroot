@@ -20,14 +20,7 @@ else
 KNOT_HAL_DRIVER_CONF_OPTS = CFLAGS='-DRPI_BOARD'
 endif
 endif
-KNOT_HAL_DRIVER_CONF_OPTS += --prefix=/usr/local --exec-prefix=/usr/local
-ifeq ($(BR2_STATIC_LIBS),y)
-KNOT_HAL_DRIVER_CONF_OPTS += \
-	--enable-share=no
-else
-KNOT_HAL_DRIVER_CONF_OPTS += \
-	--enable-static=no
-endif
+KNOT_HAL_DRIVER_CONF_OPTS += --prefix=/usr --exec-prefix=/usr
 KNOT_HAL_DRIVER_DEPENDENCIES = libglib2
 
 $(eval $(autotools-package))
