@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBELL_VERSION = 0.4
+LIBELL_VERSION = 1b8e643629bb6746c82fa7ca6b00c204e1d4813d
 LIBELL_SOURCE = ell-$(LIBELL_VERSION).tar.gz
 LIBELL_SITE = https://git.kernel.org/pub/scm/libs/ell/ell.git/snapshot
 LIBELL_LICENSE_FILES = COPYING
