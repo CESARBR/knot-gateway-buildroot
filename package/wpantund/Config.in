@@ -1,0 +1,5 @@
+config BR2_PACKAGE_WPANTUND
+	bool "wpantund"
+	select BR2_PACKAGE_BOOST
+	help
+	  Wireless Network Interface Daemon for Low-Power Wireless SoCs

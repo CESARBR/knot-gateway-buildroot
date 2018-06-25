@@ -1831,4 +1831,8 @@ menu "KNoT"
 	source "package/lora-pkt-forwarder/Config.in"
 endmenu
 
+menu "OpenThread"
+	source "package/wpantund/Config.in"
+endmenu
+
 endmenu

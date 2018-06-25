@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# Start wpantund
+#
+
+start() {
+        printf "Starting wpantund: "
+        if /etc/knot/start.sh wpantund -o \
+		Daemon:SetDefaultRouteForAutoAddedPrefix true -o \
+		IPv6:SetSLAACForAutoAddedPrefix true
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+stop() {
+        printf "Stopping wpantund: "
+        if /etc/knot/stop.sh wpantund
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+restart() {
+        stop
+        start
+}
+
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
