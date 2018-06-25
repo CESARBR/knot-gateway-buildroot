@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.network "private_network", type: "dhcp"
-  config.vm.synced_folder ".", "/home/ubuntu/buildroot", type: "nfs", mount_options: ["rw", "vers=3", "tcp", "fsc", "actimeo=2"]
+  config.vm.synced_folder ".", "/home/vagrant/buildroot", type: "nfs", mount_options: ["rw", "vers=3", "tcp", "fsc", "actimeo=2"]
 
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
@@ -26,6 +26,6 @@ Vagrant.configure("2") do |config|
       wget unzip \
       cachefilesd
     echo "RUN=yes" | sudo tee /etc/default/cachefilesd
-    sudo -u ubuntu mkdir -p /home/ubuntu/output
+    sudo -u vagrant mkdir -p /home/vagrant/output
   SHELL
 end
