@@ -26,10 +26,9 @@ LIBELL_CONF_ENV = \
 	LDFLAGS="$(TARGET_LDFLAGS) -lm"
 
 define LIBELL_BOOTSTRAP
-        ln -s $(@D) $(@D)/../ell.git && cd $(@D) && ./bootstrap
+        cd $(@D) && ./bootstrap
 endef
 
 LIBELL_PRE_CONFIGURE_HOOKS += LIBELL_BOOTSTRAP
-
 $(eval $(autotools-package))
 
