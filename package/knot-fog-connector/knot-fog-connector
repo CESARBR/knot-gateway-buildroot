@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# Run knot-fog-connector
+#
+
+cd /usr/local/bin/knot-fog-connector-*/
+NODE_ENV=production npm start &
+echo $! > /tmp/knot-fog-connector.pid
+
+PIDFILE=/tmp/knot-fog-connector.pid
+PID=`cat $PIDFILE`
+
+while [ -e /proc/$PID ]
+do
+	sleep 1
+done
