@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Start knot-fog-connector
+#
+
+start() {
+        printf "Starting KNoT Fog Connector: "
+        if /etc/knot/start.sh knot-fog-connector
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+stop() {
+        printf "Stopping KNoT Fog Connector: "
+        if /etc/knot/stop.sh knot-fog-connector
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+restart() {
+        stop
+        start
+}
+
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
