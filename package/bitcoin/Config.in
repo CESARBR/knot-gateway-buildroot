@@ -1,0 +1,26 @@
+config BR2_PACKAGE_BITCOIN
+	bool "bitcoin"
+	select BR2_TOOLCHAIN_BUILDROOT_USE_SSP
+	select BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_BOOST
+	select BR2_PACKAGE_BOOST_SYSTEM
+	select BR2_PACKAGE_BOOST_FILESYSTEM
+	select BR2_PACKAGE_BOOST_THREAD
+	select BR2_PACKAGE_BOOST_CHRONO
+	select BR2_PACKAGE_BOOST_PROGRAM_OPTIONS
+	select BR2_PACKAGE_OPENSSL
+	select BR2_PACKAGE_LIBEVENT
+	help
+	  Bitcoin Core is an open source project which maintains and
+	  releases Bitcoin client software called “Bitcoin Core”.
+
+	  It is a direct descendant of the original Bitcoin software
+	  client released by Satoshi Nakamoto after he published the
+	  famous Bitcoin whitepaper.
+
+	  Bitcoin Core consists of both “full-node” software for fully
+	  validating the blockchain as well as a bitcoin wallet. The
+	  project also currently maintains related software such as the
+	  cryptography library libsecp256k1 and others located at GitHub.
+
+	  https://bitcoincore.org

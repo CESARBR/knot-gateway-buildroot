@@ -1936,6 +1936,10 @@ endif
 	source "package/xtables-addons/Config.in"
 	source "package/znc/Config.in"
 
+menu "Blockchain Applications"
+	source "package/bitcoin/Config.in"
+endmenu
+
 endmenu
 
 menu "Package managers"
