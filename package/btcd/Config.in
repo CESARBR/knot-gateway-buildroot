@@ -1,0 +1,10 @@
+config BR2_PACKAGE_BTCD
+	bool "btcd"
+	depends on BR2_PACKAGE_HOST_GO_ARCH_SUPPORTS
+	select BR2_PACKAGE_HOST_GO_GLIDE
+	help
+	  btcd is an alternative full node bitcoin implementation
+	  written in Go (golang).
+
+	  https://github.com/btcsuite/btcd
+

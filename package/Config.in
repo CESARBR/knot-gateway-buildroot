@@ -1938,6 +1938,7 @@ endif
 
 menu "Blockchain Applications"
 	source "package/bitcoin/Config.in"
+	source "package/btcd/Config.in"
 endmenu
 
 endmenu
