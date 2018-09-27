@@ -1,0 +1,12 @@
+config BR2_PACKAGE_HOST_GO_GLIDE
+	bool "host glide"
+	depends on BR2_PACKAGE_HOST_GO_ARCH_SUPPORTS
+	help
+	  Glide is a tool for managing the _vendor_ directory within a Go
+	  package. This feature, first introduced in Go 1.5, allows each
+	  package to have a _vendor_ directory containing dependent
+	  packages for the project. These vendor packages can be
+	  installed by a tool (e.g. glide), similar to go get or they
+	  can be vendored and distributed with the package.
+
+	  https://github.com/Masterminds/glide

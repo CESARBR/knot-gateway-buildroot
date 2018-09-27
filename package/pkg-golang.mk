@@ -22,11 +22,21 @@
 ################################################################################
 
 GO_BIN = $(HOST_DIR)/bin/go
+GLIDE_BIN = $(HOST_DIR)/bin/glide
 
 # We pass an empty GOBIN, otherwise "go install: cannot install
 # cross-compiled binaries when GOBIN is set"
 GO_TARGET_ENV = \
 	$(HOST_GO_TARGET_ENV) \
+	PATH=$(BR_PATH) \
+	GOBIN= \
+	CGO_ENABLED=$(HOST_GO_CGO_ENABLED)
+
+GO_HOST_ENV = \
+	GOROOT="$(HOST_GO_ROOT)" \
+	CC="$(HOSTCC_NOCCACHE)" \
+	CXX="$(HOSTCXX_NOCCACHE)" \
+	GOTOOLDIR="$(HOST_GO_TOOLDIR)" \
 	PATH=$(BR_PATH) \
 	GOBIN= \
 	CGO_ENABLED=$(HOST_GO_CGO_ENABLED)
@@ -43,8 +53,6 @@ GO_TARGET_ENV = \
 #  argument 3 is the uppercase package name, without the HOST_ prefix for host
 #             packages
 #  argument 4 is the type (target or host)
-#
-# NOTE Only type target is supported at the moment
 ################################################################################
 
 define inner-golang-package
@@ -60,6 +68,14 @@ $(2)_BUILD_OPTS += -tags "$$($(2)_TAGS)"
 
 # Target packages need the Go compiler on the host.
 $(2)_DEPENDENCIES += host-go
+
+$(2)_GO_GET ?= NO
+$(2)_GO_GLIDE ?= NO
+
+ifeq ($($(2)_GO_GLIDE),YES)
+$(2)_DEPENDENCIES += host-go-glide
+endif
+
 
 $(2)_BUILD_TARGETS ?= .
 
@@ -97,11 +113,14 @@ endif
 # file.
 ifndef $(2)_BUILD_CMDS
 define $(2)_BUILD_CMDS
+	echo $$($(2)_DEPENDENCIES)
 	$$(foreach d,$$($(2)_BUILD_TARGETS),\
 		cd $$($(2)_SRC_PATH); \
-		$$(GO_TARGET_ENV) \
+		export $(if $(findstring $(4),target),$$(GO_TARGET_ENV),$$(GO_HOST_ENV)) \
 			GOPATH="$$(@D)/$$($(2)_WORKSPACE)" \
-			$$($(2)_GO_ENV) \
+			$$($(2)_GO_ENV) && \
+			$(if $(findstring $($(2)_GO_GLIDE),YES),$$(GLIDE_BIN) install &&) \
+			$(if $(findstring $($(2)_GO_GET),YES),$$(GO_BIN) get -d &&) \
 			$$(GO_BIN) build -v $$($(2)_BUILD_OPTS) \
 			-o $$(@D)/bin/$$(or $$($(2)_BIN_NAME),$$(notdir $$(d))) \
 			./$$(d)
@@ -119,6 +138,14 @@ define $(2)_INSTALL_TARGET_CMDS
 endef
 endif
 
+ifndef $(2)_INSTALL_CMDS
+define $(2)_INSTALL_CMDS
+	$$(foreach d,$$($(2)_INSTALL_BINS),\
+		$(INSTALL) -D -m 0755 $$(@D)/bin/$$(d) $(HOST_DIR)/usr/bin/$$(d)
+	)
+endef
+endif
+
 # Call the generic package infrastructure to generate the necessary make
 # targets
 $(call inner-generic-package,$(1),$(2),$(3),$(4))
@@ -130,3 +157,4 @@ endef # inner-golang-package
 ################################################################################
 
 golang-package = $(call inner-golang-package,$(pkgname),$(call UPPERCASE,$(pkgname)),$(call UPPERCASE,$(pkgname)),target)
+host-golang-package = $(call inner-golang-package,host-$(pkgname),$(call UPPERCASE,host-$(pkgname)),$(call UPPERCASE,$(pkgname)),host)
