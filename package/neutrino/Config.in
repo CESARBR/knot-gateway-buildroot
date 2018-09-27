@@ -1,0 +1,13 @@
+config BR2_PACKAGE_NEUTRINO
+	bool "neutrino"
+	depends on BR2_PACKAGE_HOST_GO_ARCH_SUPPORTS
+	select BR2_PACKAGE_HOST_GO_GLIDE
+	help
+	  Neutrino is an experimental Bitcoin light client written in Go
+	  and designed with mobile Lightning Network clients in mind. It
+	  uses a new proposal for compact block filters to minimize
+	  bandwidth and storage use on the client side, while attempting
+	  to preserve privacy and minimize processor load on full nodes
+	  serving light clients.
+
+	  https://github.com/lightninglabs/neutrino
