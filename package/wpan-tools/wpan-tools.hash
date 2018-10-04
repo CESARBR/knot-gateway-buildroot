@@ -2,3 +2,4 @@
 md5	91f0b640ff66910e977fab6525625624	wpan-tools-0.7.tar.xz
 # Calculated based on the hash above
 sha256	c16de9d7861c2d9b6a4436a0fac730f9f545ee290b92bc770c538ec6a3f22309	wpan-tools-0.7.tar.xz
+sha256	ab4f13fd555c779e9d57fe9e3ba1bf43a05f5fc4ec3e4f75bf92ea1f48ed2116	wpan-tools-nl802154_llsec.tar.gz

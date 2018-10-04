@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBELL_VERSION = 0.6
+LIBELL_VERSION = 409111695e76e14a6a86b21068e270a8527302a8
 LIBELL_SITE_METHOD = git
 LIBELL_SITE = https://git.kernel.org/pub/scm/libs/ell/ell.git
 LIBELL_LICENSE_FILES = COPYING

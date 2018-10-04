@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-IWPAND_VERSION = master
+IWPAND_VERSION = 7ce266ea573a260e136cec4caff9611c3f9cf5de
 IWPAND_SITE = https://github.com/CESARBR/iwpand.git
 IWPAND_SITE_METHOD = git
 IWPAND_INSTALL_STAGING = NO
