@@ -5,7 +5,7 @@
 
 start() {
         printf "Starting KNoT Fog Connector: "
-        if /etc/knot/start.sh knot-fog-connector
+        if /etc/knot/start.sh knot-connector
         then
           echo "OK"
         else
@@ -15,7 +15,7 @@ start() {
 
 stop() {
         printf "Stopping KNoT Fog Connector: "
-        if /etc/knot/stop.sh knot-fog-connector
+        if /etc/knot/stop.sh knot-connector
         then
           echo "OK"
         else
