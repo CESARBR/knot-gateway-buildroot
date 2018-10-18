@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-WPANTUND_VERSION = 0.07.01
+WPANTUND_VERSION = 47f32126c051ccfaf4c0d974010b2b4c80629c9f
 WPANTUND_SITE = https://github.com/openthread/wpantund.git
 WPANTUND_SITE_METHOD = git
 WPANTUND_INSTALL_STAGING = NO
