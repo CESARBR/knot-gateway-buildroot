@@ -9,13 +9,21 @@ WPANTUND_SITE = https://github.com/openthread/wpantund.git
 WPANTUND_SITE_METHOD = git
 WPANTUND_INSTALL_STAGING = NO
 WPANTUND_INSTALL_TARGET = YES
-WPANTUND_DEPENDENCIES = host-autoconf-archive boost
-WPANTUND_AUTORECONF = NO
-WPANTUND_MAKE = $(MAKE1)
+
 # FIXME: Find a way to put connman-plugin
 WPANTUND_CONF_OPTS = --enable-debug --disable-optimization --without-connman \
-	--with-readline --enable-ncp-spinel --enable-static-link-ncp-plugin=spinel \
+	--enable-ncp-spinel --enable-static-link-ncp-plugin=spinel \
 	--sysconfdir=/etc --prefix=/usr
+WPANTUND_DEPENDENCIES = host-autoconf-archive boost
+ifeq ($(BR2_PACKAGE_READLINE),y)
+WPANTUND_CONF_OPTS += --with-readline=$(STAGING_DIR)
+WPANTUND_DEPENDENCIES += readline
+else
+WPANTUND_CONF_OPTS += --without-readline
+endif
+
+WPANTUND_AUTORECONF = YES
+WPANTUND_MAKE = $(MAKE1)
 WPANTUND_AUTORECONF_OPTS = -I $(HOST_DIR)/usr/share/autoconf-archive
 
 define WPANTUND_BOOTSTRAP
