@@ -1,0 +1,7 @@
+config BR2_PACKAGE_HOST_GO_DEP
+	bool "host dep"
+	depends on BR2_PACKAGE_HOST_GO_ARCH_SUPPORTS
+	help
+	  Go dependency management tool.
+
+	  https://golang.github.io/dep/
