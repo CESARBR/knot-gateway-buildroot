@@ -23,6 +23,7 @@
 
 GO_BIN = $(HOST_DIR)/bin/go
 GLIDE_BIN = $(HOST_DIR)/bin/glide
+DEP_BIN = $(HOST_DIR)/bin/dep
 
 # We pass an empty GOBIN, otherwise "go install: cannot install
 # cross-compiled binaries when GOBIN is set"
@@ -71,11 +72,15 @@ $(2)_DEPENDENCIES += host-go
 
 $(2)_GO_GET ?= NO
 $(2)_GO_GLIDE ?= NO
+$(2)_GO_DEP ?= NO
 
 ifeq ($($(2)_GO_GLIDE),YES)
 $(2)_DEPENDENCIES += host-go-glide
 endif
 
+ifeq ($($(2)_GO_DEP),YES)
+$(2)_DEPENDENCIES += host-go-dep
+endif
 
 $(2)_BUILD_TARGETS ?= .
 
@@ -120,6 +125,7 @@ define $(2)_BUILD_CMDS
 			GOPATH="$$(@D)/$$($(2)_WORKSPACE)" \
 			$$($(2)_GO_ENV) && \
 			$(if $(findstring $($(2)_GO_GLIDE),YES),$$(GLIDE_BIN) install &&) \
+			$(if $(findstring $($(2)_GO_DEP),YES),$$(DEP_BIN) ensure -v &&) \
 			$(if $(findstring $($(2)_GO_GET),YES),$$(GO_BIN) get -d &&) \
 			$$(GO_BIN) build -v $$($(2)_BUILD_OPTS) \
 			-o $$(@D)/bin/$$(or $$($(2)_BIN_NAME),$$(notdir $$(d))) \
