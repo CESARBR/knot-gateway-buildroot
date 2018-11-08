@@ -1940,6 +1940,7 @@ menu "Blockchain Applications"
 	source "package/bitcoin/Config.in"
 	source "package/btcd/Config.in"
 	source "package/neutrino/Config.in"
+	source "package/lnd/Config.in"
 endmenu
 
 endmenu

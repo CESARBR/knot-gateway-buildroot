@@ -1,0 +1,16 @@
+config BR2_PACKAGE_LND
+	bool "lnd"
+	depends on BR2_PACKAGE_HOST_GO_ARCH_SUPPORTS && (BR2_PACKAGE_NEUTRINO || BR2_PACKAGE_BTCD || BR2_PACKAGE_BITCOIN)
+	select BR2_PACKAGE_HOST_GO_DEP
+	help
+	  The Lightning Network Daemon (lnd) - is a complete
+	  implementation of a Lightning Network node and currently
+	  deployed on testnet3 - the Bitcoin Test Network. lnd has
+	  several pluggable back-end chain services including btcd (a
+	  full-node), bitcoind, and neutrino (a new experimental light
+	  client). The project's codebase uses the btcsuite set of
+	  Bitcoin libraries, and also exports a large set of isolated
+	  re-usable Lightning Network related libraries within it.
+
+	  https://lightning.network/
+
