@@ -13,7 +13,7 @@ KNOT_NETWORK_NRF24_DEPENDENCIES = knot-protocol-lib knot-hal-driver libell
 KNOT_NETWORK_NRF24_AUTORECONF = YES
 KNOT_NETWORK_NRF24_MAKE = $(MAKE1)
 
-KNOT_NETWORK_NRF24_CONF_OPTS = --prefix=/usr/local --exec-prefix=/usr/local --enable-debug --disable-optimization
+KNOT_NETWORK_NRF24_CONF_OPTS = --prefix=/usr/local --exec-prefix=/usr/local
 
 ifeq ($(BR2_STATIC_LIBS),y)
 KNOT_NETWORK_NRF24_CONF_OPTS += \
@@ -21,6 +21,14 @@ KNOT_NETWORK_NRF24_CONF_OPTS += \
 else
 KNOT_NETWORK_NRF24_CONF_OPTS += \
 	--enable-static=no
+endif
+
+ifeq ($(BR2_ENABLE_DEBUG),y)
+KNOT_SERVICE_APP_CONF_OPTS += \
+	--enable-debug --disable-optimization
+else
+KNOT_SERVICE_APP_CONF_OPTS += \
+	--disable-debug --enable-optimization
 endif
 
 define KNOT_NETWORK_NRF24_INSTALL_INIT_SCRIPT

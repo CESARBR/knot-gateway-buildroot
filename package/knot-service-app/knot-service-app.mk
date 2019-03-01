@@ -11,7 +11,7 @@ KNOT_SERVICE_APP_INSTALL_STAGING = NO
 KNOT_SERVICE_APP_INSTALL_TARGET = YES
 KNOT_SERVICE_APP_DEPENDENCIES = libglib2 json-c libcurl knot-protocol-lib libwebsockets
 KNOT_SERVICE_APP_AUTORECONF = YES
-KNOT_SERVICE_APP_CONF_OPTS = --prefix=/usr/local --exec-prefix=/usr/local --enable-debug --disable-optimization
+KNOT_SERVICE_APP_CONF_OPTS = --prefix=/usr/local --exec-prefix=/usr/local
 
 ifeq ($(BR2_STATIC_LIBS),y)
 KNOT_SERVICE_APP_CONF_OPTS += \
@@ -20,6 +20,15 @@ else
 KNOT_SERVICE_APP_CONF_OPTS += \
 	--enable-static=no
 endif
+
+ifeq ($(BR2_ENABLE_DEBUG),y)
+KNOT_SERVICE_APP_CONF_OPTS += \
+	--enable-debug --disable-optimization
+else
+KNOT_SERVICE_APP_CONF_OPTS += \
+	--disable-debug --enable-optimization
+endif
+
 define KNOT_SERVICE_APP_BOOTSTRAP
 	cd $(@D) &&  ./bootstrap
 endef

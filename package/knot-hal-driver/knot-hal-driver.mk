@@ -23,4 +23,18 @@ endif
 KNOT_HAL_DRIVER_CONF_OPTS += --prefix=/usr --exec-prefix=/usr
 KNOT_HAL_DRIVER_DEPENDENCIES = libglib2
 
+ifeq ($(BR2_ENABLE_DEBUG),y)
+KNOT_HAL_DRIVER_CONF_OPTS += \
+	--enable-debug --disable-optimization
+else
+KNOT_HAL_DRIVER_CONF_OPTS += \
+	--disable-debug --enable-optimization
+endif
+
+define KNOT_HAL_DRIVER_BOOTSTRAP
+	cd $(@D) &&  ./bootstrap
+endef
+
+KNOT_HAL_DRIVER_POST_PATCH_HOOKS += KNOT_HAL_DRIVER_BOOTSTRAP
+
 $(eval $(autotools-package))
