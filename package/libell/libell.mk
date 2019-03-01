@@ -21,6 +21,14 @@ else
 LIBELL_CONF_OPTS += --enable-static=no
 endif
 
+ifeq ($(BR2_ENABLE_DEBUG),y)
+LIBELL_CONF_OPTS += \
+	--enable-debug --disable-optimization
+else
+LIBELL_CONF_OPTS += \
+	--disable-debug --enable-optimization
+endif
+
 LIBELL_CONF_ENV = \
 	CFLAGS="$(LIBELL_CFLAGS)" \
 	LDFLAGS="$(TARGET_LDFLAGS) -lm"
