@@ -12,7 +12,7 @@ KNOT_FOG_CONNECTOR_DEPENDENCIES = nodejs
 define KNOT_FOG_CONNECTOR_INSTALL_TARGET_CMDS
 	rm -rf $(TARGET_DIR)/usr/local/bin/knot-fog-connector
 	mkdir -p $(TARGET_DIR)/usr/local/bin/knot-fog-connector
-	cd $(@D) && $(NPM) install && $(NPM) run build
+	cd $(@D) && $(NPM) install && $(NPM) run build && $(NPM) prune --production
 	cp -R $(@D)/. $(TARGET_DIR)/usr/local/bin/knot-fog-connector
 endef
 
