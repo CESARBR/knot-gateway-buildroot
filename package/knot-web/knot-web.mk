@@ -12,7 +12,7 @@ KNOT_WEB_DEPENDENCIES = nodejs
 define KNOT_WEB_INSTALL_TARGET_CMDS
 	rm -rf $(TARGET_DIR)/usr/local/bin/knot-web*
 	mkdir -p $(TARGET_DIR)/usr/local/bin/
-	cd $(@D) && $(NPM) install && $(NPM) run build && $(NPM) prune --production && $(NPM) install --production
+	cd $(@D) && $(NPM) install && $(NPM) run build && $(NPM) prune --production
 	cp -R $(@D) $(TARGET_DIR)/usr/local/bin/
 endef
 
