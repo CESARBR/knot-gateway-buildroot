@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_NETWORK_NRF24_VERSION = KNOT-v01.04-rc01
+KNOT_NETWORK_NRF24_VERSION = KNOT-v01.04-rc02
 KNOT_NETWORK_NRF24_SITE = https://github.com/CESARBR/knot-network-nrf24.git
 KNOT_NETWORK_NRF24_SITE_METHOD = git
 KNOT_NETWORK_NRF24_INSTALL_STAGING = NO
