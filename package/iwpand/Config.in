@@ -1,6 +1,0 @@
-config BR2_PACKAGE_IWPAND
-	bool "iwpand"
-	 select BR2_PACKAGE_LIBNL
-	 select BR2_PACKAGE_LIBELL
-	help
-	  iwpand provides an user space daemon to manage 802.15.4 connections.
