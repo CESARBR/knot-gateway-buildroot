@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-RABBITMQ_SERVER_VERSION = 3.6.6
-RABBITMQ_SERVER_SITE = http://www.rabbitmq.com/releases/rabbitmq-server/v$(RABBITMQ_SERVER_VERSION)
-RABBITMQ_SERVER_SOURCE = rabbitmq-server-$(RABBITMQ_SERVER_VERSION).tar.xz
+RABBITMQ_SERVER_VERSION = 3.7.13
+RABBITMQ_SERVER_SITE = https://github.com/rabbitmq/rabbitmq-server/releases/download/v$(RABBITMQ_SERVER_VERSION)
+RABBITMQ_SERVER_SOURCE = rabbitmq-server-generic-unix-$(RABBITMQ_SERVER_VERSION).tar.xz
 RABBITMQ_SERVER_LICENSE = MPL-1.1, Apache-2.0, BSD-2-Clause, EPL, MIT, MPL-2.0
 RABBITMQ_SERVER_LICENSE_FILES = LICENSE-MPL-RabbitMQ \
 				LICENSE LICENSE-APACHE2-ExplorerCanvas \
@@ -20,15 +20,12 @@ RABBITMQ_SERVER_LICENSE_FILES = LICENSE-MPL-RabbitMQ \
 RABBITMQ_SERVER_DEPENDENCIES = host-libxslt host-zip erlang libxslt
 RABBITMQ_SERVER_TARGET_BINS = rabbitmq-plugins rabbitmq-server rabbitmqctl rabbitmq-env rabbitmq-defaults
 
-define RABBITMQ_SERVER_BUILD_CMDS
-	$(TARGET_MAKE_ENV) $(MAKE) -C $(@D)
-endef
-
 define RABBITMQ_SERVER_INSTALL_TARGET_CMDS
-	$(TARGET_MAKE_ENV) $(MAKE) PREFIX=$(TARGET_DIR)/usr -C $(@D) install
-
+	rm -rf $(TARGET_DIR)/usr/local/rabbitmq-server
+	mkdir -p $(TARGET_DIR)/usr/local/rabbitmq-server
+	cp -R $(@D)/. $(TARGET_DIR)/usr/local/rabbitmq-server
 	for bin in $(RABBITMQ_SERVER_TARGET_BINS); do \
-		ln -sf ../lib/erlang/lib/rabbitmq_server-$(RABBITMQ_SERVER_VERSION)/sbin/$$bin \
+		ln -sf /usr/local/rabbitmq-server/sbin/$$bin \
 			$(TARGET_DIR)/usr/sbin/$$bin; \
 	done
 endef
