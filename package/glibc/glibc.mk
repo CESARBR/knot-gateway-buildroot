@@ -118,7 +118,14 @@ ifeq ($(BR2_PACKAGE_GDB),y)
 GLIBC_LIBS_LIB += libthread_db.so.*
 endif
 
+ifeq ($(BR2_PACKAGE_RABBITMQ_SERVER), y)
+GLIBC_POSIX_UTILITIES = getconf
+endif
+
 define GLIBC_INSTALL_TARGET_CMDS
+	for utility in $(GLIBC_POSIX_UTILITIES); do \
+		cp $(@D)/build/posix/$$utility $(TARGET_DIR)/usr/bin ; \
+	done
 	for libpattern in $(GLIBC_LIBS_LIB); do \
 		$(call copy_toolchain_lib_root,$$libpattern) ; \
 	done
