@@ -23,9 +23,3 @@ echo "$(grep -rhiZ ^KNOT_.*_VERSION $(pwd)/package)" >> ${TARGET_DIR}/etc/knot/.
 
 # Create alias
 echo "alias knot='cat /etc/knot/.version'" >> ${TARGET_DIR}/etc/profile
-
-# Add lowpan0
-
-echo "auto wpan0" >> ${TARGET_DIR}/etc/network/interfaces
-echo "iface wpan0 inet6 manual" >> ${TARGET_DIR}/etc/network/interfaces
-echo "        post-up /sbin/lowpan0.sh" >> ${TARGET_DIR}/etc/network/interfaces
