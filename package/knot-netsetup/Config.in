@@ -1,0 +1,4 @@
+config BR2_PACKAGE_KNOT_NETSETUP
+	bool "knot-netsetup"
+	help
+	  TODO
