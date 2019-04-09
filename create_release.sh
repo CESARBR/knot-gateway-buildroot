@@ -33,15 +33,37 @@ then
 fi
 
 mkdir -p "$TMP_PATH" && cd "$TMP_PATH"
+read -p "Tag to apply: " TAG
 
 for repo in ${KNOT_REPOS[@]}; do
     git clone "${GITHUB_SSH}${KNOT_ORG}/${repo}"
     if [ ! $? -eq 0 ]; then
         exit 1
     fi
+
+    cd "$repo" && git tag "$TAG" && git push origin "$TAG"
+    if [ ! $? -eq 0 ]; then
+        echo "An error occured while tagging remote."
+        echo "Do you want to remove $TAG from ALL remotes?"
+        read resp
+        if [ "$resp" != "y" ];
+            then
+            if [ "$resp" != "Y" ];
+            then
+                exit 1
+            fi
+        fi
+        cd ..
+        for repo in ${KNOT_REPOS[@]}; do
+            git push origin --delete "$TAG"
+        done
+        exit 1
+    fi
+
+    cd ..
 done
 
-read -p "Tag to apply: " TAG
+cd .. && rm -rf "$TMP_PATH"
 sed -i "/KNOT_FOG_VERSION/ s/=.*/= $TAG/g" ./package/knot-fog/knot-fog.mk
 sed -i "/KNOT_FOG_CONNECTOR_VERSION/ s/=.*/= $TAG/g" ./package/knot-fog-connector/knot-fog-connector.mk
 sed -i "/KNOT_WEB_VERSION/ s/=.*/= $TAG/g" ./package/knot-web/knot-web.mk
