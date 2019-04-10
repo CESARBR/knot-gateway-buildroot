@@ -248,6 +248,27 @@ Let's see how to access your KNoT gateway
 
 To access the KNoT gateway of your Network open your browser and type [knot.local:8080](http://knot.local:8080) in your URL bar.
 
+Managing the RabbitMQ Server
+-------
+
+If you need to debug the RabbitMQ message broker or just collect data about many aspects of the system, you can use the management plugin.
+
+In order to enable it, access the gateway terminal and run this command (logged in as 'rabbitmq' user):
+
+```shell
+$ rabbitmq-plugins enable rabbitmq_management
+```
+
+Now, create a new user and set its permissions to allow remote connections:
+
+```shell
+$ rabbitmqctl add_user <username> <password>
+$ rabbitmqctl set_user_tags <username> administrator
+$ rabbitmqctl set_permissions -p / <username> ".*" ".*" ".*"
+```
+
+The management UI can be accessed at `http://knot.local:15672/`, just use the created user and enjoy it.
+
 Possible troubleshootings
 -------------------------
 
