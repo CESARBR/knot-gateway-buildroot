@@ -1,0 +1,25 @@
+From bf4d29f812c5b7b4d68bd6a5fcd4fe1df160c1ae Mon Sep 17 00:00:00 2001
+From: Vitor Barros <vba@cesar.org.br>
+Date: Wed, 17 Apr 2019 12:43:56 -0300
+Subject: [PATCH] main.conf: Change controller mode to LE only
+
+Signed-off-by: Vitor Barros <vba@cesar.org.br>
+---
+ src/main.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.conf b/src/main.conf
+index cbae32e..8a87173 100644
+--- a/src/main.conf
++++ b/src/main.conf
+@@ -42,7 +42,7 @@
+ # Restricts all controllers to the specified transport. Default value
+ # is "dual", i.e. both BR/EDR and LE enabled (when supported by the HW).
+ # Possible values: "dual", "bredr", "le"
+-#ControllerMode = dual
++ControllerMode = le
+
+ # Enables Multi Profile Specification support. This allows to specify if
+ # system supports only Multiple Profiles Single Device (MPSD) configuration
+--
+2.7.4
