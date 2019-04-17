@@ -99,6 +99,14 @@ endef
 
 BLUEZ5_UTILS_POST_INSTALL_TARGET_HOOKS += BLUEZ5_UTILS_INSTALL_CONF_FILES
 
+define BLUEZ5_UTILS_INSTALL_INIT_SCRIPT
+	mkdir -p $(TARGET_DIR)/usr/local/bin
+	ln -fs /usr/libexec/bluetooth/bluetoothd $(TARGET_DIR)/usr/local/bin/bluetoothd
+	$(INSTALL) -D -m 0755 $(BLUEZ5_UTILS_PKGDIR)/S51bluetoothd-daemon $(TARGET_DIR)/etc/init.d/
+endef
+
+BLUEZ5_UTILS_POST_INSTALL_TARGET_HOOKS += BLUEZ5_UTILS_INSTALL_INIT_SCRIPT
+
 # enable test
 ifeq ($(BR2_PACKAGE_BLUEZ5_UTILS_TEST),y)
 BLUEZ5_UTILS_CONF_OPTS += --enable-test

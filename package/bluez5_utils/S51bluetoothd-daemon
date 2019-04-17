@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+# Start bluetoothd
+#
+
+start() {
+        hciattach /dev/ttyAMA0 bcm43xx 115200 noflow -
+        hciconfig hci0 up
+        printf "Starting bluetoothd: "
+        if /etc/knot/start.sh bluetoothd -f /etc/bluetooth/main.conf -n
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+stop() {
+        hciconfig hci0 down
+        printf "Stopping bluetoothd: "
+        if /etc/knot/stop.sh bluetoothd
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+restart() {
+        stop
+        start
+}
+
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
