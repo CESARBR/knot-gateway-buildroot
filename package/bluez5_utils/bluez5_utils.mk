@@ -89,6 +89,16 @@ else
 BLUEZ5_UTILS_CONF_OPTS += --disable-deprecated
 endif
 
+define BLUEZ5_UTILS_INSTALL_CONF_FILES
+	mkdir -p $(TARGET_DIR)/etc/bluetooth/
+	$(INSTALL) -D -m 0755 $(@D)/src/main.conf $(TARGET_DIR)/etc/bluetooth/
+	$(INSTALL) -D -m 0755 $(@D)/src/bluetooth.conf $(TARGET_DIR)/etc/bluetooth/
+	$(INSTALL) -D -m 0755 $(@D)/profiles/network/network.conf $(TARGET_DIR)/etc/bluetooth/
+	$(INSTALL) -D -m 0755 $(@D)/profiles/input/input.conf $(TARGET_DIR)/etc/bluetooth/
+endef
+
+BLUEZ5_UTILS_POST_INSTALL_TARGET_HOOKS += BLUEZ5_UTILS_INSTALL_CONF_FILES
+
 # enable test
 ifeq ($(BR2_PACKAGE_BLUEZ5_UTILS_TEST),y)
 BLUEZ5_UTILS_CONF_OPTS += --enable-test
