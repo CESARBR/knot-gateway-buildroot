@@ -5,7 +5,6 @@
 
 start() {
         hciattach /dev/ttyAMA0 bcm43xx 115200 noflow -
-        hciconfig hci0 up
         printf "Starting bluetoothd: "
         if /etc/knot/start.sh bluetoothd -f /etc/bluetooth/main.conf -n
         then
@@ -16,7 +15,6 @@ start() {
 }
 
 stop() {
-        hciconfig hci0 down
         printf "Stopping bluetoothd: "
         if /etc/knot/stop.sh bluetoothd
         then
