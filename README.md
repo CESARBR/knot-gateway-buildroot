@@ -53,6 +53,9 @@ unzip
 rsync
 libtoolize
 aclocal
+pkg-config
+autoconf-archive
+libdbus-1-dev
 
 Source fetching tools:
 
