@@ -7,7 +7,7 @@
 KNOT_WEB_VERSION = KNOT-v01.04-rc03
 KNOT_WEB_SITE_METHOD = git
 KNOT_WEB_SITE = https://github.com/CESARBR/knot-gateway-webui.git
-KNOT_WEB_DEPENDENCIES = nodejs
+KNOT_WEB_DEPENDENCIES = nodejs avahi
 
 define KNOT_WEB_INSTALL_TARGET_CMDS
 	rm -rf $(TARGET_DIR)/usr/local/bin/knot-web*
@@ -22,5 +22,12 @@ define KNOT_WEB_INSTALL_INIT_SCRIPT
 endef
 
 KNOT_WEB_POST_INSTALL_TARGET_HOOKS += KNOT_WEB_INSTALL_INIT_SCRIPT
+
+define KNOT_WEB_AVAHI_KNOT_SERVICE
+	$(INSTALL) -D -m 644 package/knot-web/knot-web.service \
+		$(TARGET_DIR)/etc/avahi/services/
+endef
+
+KNOT_WEB_POST_INSTALL_TARGET_HOOKS += KNOT_WEB_AVAHI_KNOT_SERVICE
 
 $(eval $(generic-package))
