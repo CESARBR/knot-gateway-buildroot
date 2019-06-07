@@ -197,6 +197,15 @@ define AVAHI_INSTALL_SYSTEMD_SYSUSERS
 endef
 endif
 
+ifneq ($(BR2_PACKAGE_AVAHI_ENABLE_IPV6),y)
+define AVAHI_DISABLE_IPV6
+	sed -i 's/use-ipv6=yes/use-ipv6=no/' $(TARGET_DIR)/etc/avahi/avahi-daemon.conf
+	sed -i 's/#publish-aaaa-on-ipv4=yes/publish-aaaa-on-ipv4=no/' $(TARGET_DIR)/etc/avahi/avahi-daemon.conf
+endef
+
+AVAHI_POST_INSTALL_TARGET_HOOKS += AVAHI_DISABLE_IPV6
+endif
+
 define AVAHI_INSTALL_INIT_SYSTEMD
 	mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
 
