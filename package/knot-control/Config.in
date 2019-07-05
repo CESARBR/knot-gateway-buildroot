@@ -1,0 +1,7 @@
+config BR2_PACKAGE_KNOT_CONTROL
+	bool "knot-control"
+	select BR2_PACKAGE_PYTHON_PIKA
+	select BR2_PACKAGE_PYTHON_PYMONGO
+
+	help
+	  KNoT Gateway process used to control the hardware status and configurations.

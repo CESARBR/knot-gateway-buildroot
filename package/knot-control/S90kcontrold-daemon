@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Start control
+#
+
+start() {
+        printf "Starting control: "
+        if /etc/knot/start.sh kcontrold -n
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+stop() {
+        printf "Stopping control: "
+        if /etc/knot/stop.sh kcontrold
+        then
+          echo "OK"
+        else
+          echo "FAIL"
+        fi
+}
+
+restart() {
+        stop
+        start
+}
+
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
