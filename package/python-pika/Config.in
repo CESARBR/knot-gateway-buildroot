@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_PIKA
+	bool "python-pika"
+	depends on BR2_PACKAGE_PYTHON
+	select BR2_PACKAGE_PYTHON_SSL
+	help
+	  An implementation of the AMQP 0-9-1 protocol for Python.
+
+	  https://pypi.org/project/pika/
