@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PYMONGO
+	bool "python-pymongo"
+	depends on BR2_PACKAGE_PYTHON
+	help
+	  An implementation of MongoDB for Python.
+
+	  https://pypi.org/project/pymongo/
