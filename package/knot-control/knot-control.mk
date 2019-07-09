@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_CONTROL_VERSION = b7ac0451ab8ea402be47e096cab4f11bc1f272ad
+KNOT_CONTROL_VERSION = KNOT-v02.00
 KNOT_CONTROL_SITE = https://github.com/CESARBR/knot-gateway-control.git
 KNOT_CONTROL_SITE_METHOD = git
 KNOT_CONTROL_SETUP_TYPE = setuptools
