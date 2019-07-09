@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_NETSETUP_VERSION = d911e2baa08815f9c76c8cf2a99ef400cda4e0a3
+KNOT_NETSETUP_VERSION = 7c7005099582b6ca30d705361a4c71c25484e914
 KNOT_NETSETUP_SITE = https://github.com/CESARBR/knot-gateway-netsetup.git
 KNOT_NETSETUP_SITE_METHOD = git
 KNOT_NETSETUP_SETUP_TYPE = setuptools
