@@ -26,6 +26,7 @@ define RABBITMQ_SERVER_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/data/rabbitmq/rabbit@knot-plugins-expand
 	mkdir -p $(TARGET_DIR)/usr/local/rabbitmq-server
 	echo "MNESIA_BASE=/data/rabbitmq" >> $(@D)/etc/rabbitmq/rabbitmq-env.conf
+	echo "NODENAME=rabbit@knot" >> $(@D)/etc/rabbitmq/rabbitmq-env.conf
 	cp -R $(@D)/. $(TARGET_DIR)/usr/local/rabbitmq-server
 	for bin in $(RABBITMQ_SERVER_TARGET_BINS); do \
 		ln -sf /usr/local/rabbitmq-server/sbin/$$bin \
