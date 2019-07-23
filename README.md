@@ -138,7 +138,9 @@ download the packages' sources.
 
 You should base your work on this defconfig:
 
-1. run `make knot_gateway` or `make BR2_GATEWAY_HARDWARE=configs/<raspberrypi_model>_defconfig knot_gateway` to select a diferent model from the original. There are four different raspberry pi defconfigs to choose.
+1. run `make <knot_board_defconfig>`
+    Currently supported KNoT defconfigs:
+    - knot_raspberrypi3_defconfig
 2. run `make menuconfig`
 3. select the extra packages you wish to compile
 4. run `make`
