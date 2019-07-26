@@ -9,7 +9,7 @@ KNOT_SERVICE_APP_SITE = https://github.com/CESARBR/knot-service-source.git
 KNOT_SERVICE_APP_SITE_METHOD = git
 KNOT_SERVICE_APP_INSTALL_STAGING = NO
 KNOT_SERVICE_APP_INSTALL_TARGET = YES
-KNOT_SERVICE_APP_DEPENDENCIES = libglib2 json-c libcurl knot-protocol-lib libwebsockets
+KNOT_SERVICE_APP_DEPENDENCIES = libglib2 json-c libcurl libell knot-protocol-lib knot-hal-driver libwebsockets
 KNOT_SERVICE_APP_AUTORECONF = YES
 KNOT_SERVICE_APP_CONF_OPTS = --prefix=/usr/local --exec-prefix=/usr/local
 

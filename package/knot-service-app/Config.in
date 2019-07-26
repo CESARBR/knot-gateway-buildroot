@@ -1,8 +1,20 @@
 config BR2_PACKAGE_KNOT_SERVICE_APP
 	bool "knot-service-app"
 	depends on BR2_PACKAGE_KNOT_PROTOCOL_LIB
+	depends on BR2_PACKAGE_KNOT_HAL_DRIVER
+	depends on BR2_PACKAGE_KNOT_FOG
 	depends on BR2_PACKAGE_LIBWEBSOCKETS
 	select BR2_PACKAGE_LIBCURL
+	select BR2_PACKAGE_LIBELL
+	select BR2_PACKAGE_LIBGLIB2
 	select BR2_PACKAGE_JSON_C
 	help
-	  TODO
+	  KNOT service is part of KNOT project. Provides knotd daemon
+	  and inetbrd daemon.
+
+	  knotd: acting as proxy between the network managers and the
+	  KNoTFog, thus providing a central point for handling KNoT
+	  devices, protocol translation, and message forwarding
+	  capabilities.
+	  inetbrd: creates an IP bridge for sending the traffic from
+	  local interfaces to the KNoT Device Manager (knotd).
