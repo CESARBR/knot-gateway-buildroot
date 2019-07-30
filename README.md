@@ -141,6 +141,7 @@ You should base your work on this defconfig:
 1. run `make <knot_board_defconfig>`
     Currently supported KNoT defconfigs:
     - knot_raspberrypi3_defconfig
+    - knot_raspberrypi0w_defconfig
 2. run `make menuconfig`
 3. select the extra packages you wish to compile
 4. run `make`
