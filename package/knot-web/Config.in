@@ -1,7 +1,10 @@
 config BR2_PACKAGE_KNOT_WEB
-        bool "knot-web"
-        #depends on BR2_PACKAGE_MONGODB
-        depends on BR2_PACKAGE_NODEJS
-        select BR2_PACKAGE_AVAHI
-        help
-          TODO
+    bool "knot-web"
+    depends on BR2_PACKAGE_KNOT_SERVICE_APP
+    depends on BR2_PACKAGE_MONGODB
+    select BR2_PACKAGE_NODEJS
+    select BR2_PACKAGE_AVAHI
+    help
+      The KNoT Gateway UI is a Web interface for managing KNoT devices
+	  coming from all networks and also for managing the gateway itself
+	  in terms of configuring IP, user credentials, etc.
