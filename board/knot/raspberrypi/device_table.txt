@@ -1,0 +1,6 @@
+# Device table for KNoT packages
+#
+# <name>				<type>	<mode>	<uid>	<gid>	<major>	<minor>	<start>	<inc>	<count>
+/usr/local/bin/knot-fog-source		r	755	1003	1003	-	-	-	-	-
+/usr/local/bin/knot-fog-connector	r	755	1003	1003	-	-	-	-	-
+/data/rabbitmq				r	755	1004	1004	-	-	-	-	-
