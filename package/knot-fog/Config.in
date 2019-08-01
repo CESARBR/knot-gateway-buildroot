@@ -1,6 +1,9 @@
 config BR2_PACKAGE_KNOT_FOG
-        bool "knot-fog"
-        #depends on BR2_PACKAGE_MONGODB
-        depends on BR2_PACKAGE_NODEJS
-        help
-          TODO
+    bool "knot-fog"
+    depends on BR2_PACKAGE_MONGODB
+    select BR2_PACKAGE_NODEJS
+    help
+      The KNoT Fog is responsible for providing IoT cloud capabilities
+	  in the gateway, such as message brokering, data storage, and data
+	  processing, as well as for providing local access to devices when
+	  Internet connection is not available.
