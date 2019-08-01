@@ -2,6 +2,10 @@ config BR2_PACKAGE_KNOT_NETWORK_NRF24
 	bool "knot-network-nrf24"
 	depends on BR2_PACKAGE_KNOT_PROTOCOL_LIB
 	depends on BR2_PACKAGE_KNOT_HAL_DRIVER
-	depends on BR2_PACKAGE_LIBELL
+	select BR2_PACKAGE_LIBELL
 	help
-	  TODO
+	  The PAN Network Manager is responsible for establishing a
+	  Personal Area Network (PAN) with devices using this type of
+	  protocol stack. In our reference implementation, the nRF24l01+
+	  radio was used for the PAN network. The daemon nrfd has the
+	  NRF24L01+drivers, PHY, Link, and network layers of this stack.
