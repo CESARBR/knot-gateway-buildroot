@@ -1,4 +1,17 @@
 config BR2_PACKAGE_KNOT_NETSETUP
 	bool "knot-netsetup"
+	depends on BR2_PACKAGE_BLUEZ5_UTILS=y
+	depends on BR2_PACKAGE_BLUEZ5_UTILS_CLIENT=y
+	depends on BR2_PACKAGE_BLUEZ5_UTILS_DEPRECATED=y
+	depends on BR2_PACKAGE_BLUEZ_TOOLS=y
+	depends on BR2_PACKAGE_CONNMAN
+	depends on BR2_PACKAGE_WPANTUND
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS
+	select BR2_PACKAGE_PYTHON_LOCKFILE
+	select BR2_PACKAGE_PYTHON_GOBJECT
+	select BR2_PACKAGE_PYTHON_DAEMON
+	select BR2_PACKAGE_PYTHON_DOCUTILS
+	select BR2_PACKAGE_DBUS_PYTHON
 	help
-	  TODO
+	  KNoT netsetup is a daemon to setup network interfaces (currently
+	  Openthread wpan0 interface) from DBus or Bluetooth interfaces.
