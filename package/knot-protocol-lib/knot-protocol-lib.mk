@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_PROTOCOL_LIB_VERSION = KNOT-v02.00
+KNOT_PROTOCOL_LIB_VERSION = KNOT-v02.01-rc01
 KNOT_PROTOCOL_LIB_SITE = https://github.com/CESARBR/knot-protocol-source.git
 KNOT_PROTOCOL_LIB_SITE_METHOD = git
 KNOT_PROTOCOL_LIB_INSTALL_STAGING = YES
