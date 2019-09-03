@@ -10,6 +10,8 @@ knot-protocol-source \
 knot-service-source \
 knot-fog-connector \
 knot-network-nrf24 \
+knot-gateway-netsetup \
+knot-gateway-control \
 knot-cloud \
 zephyr-knot-sdk \
 zephyr \
@@ -62,6 +64,8 @@ function showHelp() {
     echo "--sdk Applies tag into zephyr-knot-sdk at specified hash, tag or branch."
     echo "--zephyr Applies tag into zephyr-knot-sdk at specified hash, tag or branch."
     echo "--thing Applies tag into zephyr-knot-sdk at specified hash, tag or branch."
+    echo "--netsetup Applies tag into knot-gateway-netsetup at specified hash, tag or branch."
+    echo "--control Applies tag into knot-gateway-control at specified hash, tag or branch."
     echo "--docs Applies tag into knot-documentation at specified hash, tag or branch. Not supported yet."
 }
 
@@ -131,6 +135,18 @@ function changeTagBase() {
         if [ ! -z "$THING" ]; then
             echo "Using $THING on knot-thing-source"
             git checkout "$THING"
+        fi
+        ;;
+	knot-gateway-netsetup)
+        if [ ! -z "$NETSETUP" ]; then
+            echo "Using $NETSETUP on knot-gateway-netsetup"
+            git checkout "$NETSETUP"
+        fi
+        ;;
+	knot-gateway-control)
+        if [ ! -z "$CONTROL" ]; then
+            echo "Using $CONTROL on knot-gateway-control"
+            git checkout "$CONTROL"
         fi
         ;;
     esac
@@ -207,6 +223,14 @@ while (( "$#" )); do
         THING=$2
         shift 2
         ;;
+        --netsetup)
+        NETSETUP=$2
+        shift 2
+        ;;
+        --control)
+        CONTROL=$2
+        shift 2
+        ;;
         --) # end argument parsing
         shift
         break
@@ -261,11 +285,15 @@ sed -i "/KNOT_HAL_DRIVER_VERSION/ s/=.*/= $TAG/g" ./package/knot-hal-driver/knot
 sed -i "/KNOT_NETWORK_NRF24_VERSION/ s/=.*/= $TAG/g" ./package/knot-network-nrf24/knot-network-nrf24.mk
 sed -i "/KNOT_PROTOCOL_LIB_VERSION/ s/=.*/= $TAG/g" ./package/knot-protocol-lib/knot-protocol-lib.mk
 sed -i "/KNOT_SERVICE_APP_VERSION/ s/=.*/= $TAG/g" ./package/knot-service-app/knot-service-app.mk
+sed -i "/KNOT_NETSETUP_VERSION/ s/=.*/= $TAG/g" ./package/knot-netsetup/knot-netsetup.mk
+sed -i "/KNOT_CONTROL_VERSION/ s/=.*/= $TAG/g" ./package/knot-control/knot-control.mk
 git add package/knot-fog/knot-fog.mk package/knot-web/knot-web.mk \
 package/knot-hal-driver/knot-hal-driver.mk \
 package/knot-protocol-lib/knot-protocol-lib.mk \
 package/knot-service-app/knot-service-app.mk \
 package/knot-fog-connector/knot-fog-connector.mk \
+package/knot-netsetup/knot-netsetup.mk \
+package/knot-control/knot-control.mk \
 package/knot-network-nrf24/knot-network-nrf24.mk
 git commit
 git tag "$TAG"
