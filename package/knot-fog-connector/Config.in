@@ -1,6 +1,5 @@
 config BR2_PACKAGE_KNOT_FOG_CONNECTOR
 	bool "knot-fog-connector"
-	depends on BR2_PACKAGE_KNOT_FOG
 	depends on BR2_PACKAGE_RABBITMQ_SERVER
 	select BR2_PACKAGE_NODEJS
 	help
