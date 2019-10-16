@@ -44,6 +44,9 @@ BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/knot/raspberrypi/knot_linux_defcon
 BR2_ROOTFS_USERS_TABLES="board/knot/raspberrypi/rootfs_overlay/etc/knot/users"
 BR2_ROOTFS_DEVICE_TABLE="board/knot/raspberrypi/device_table.txt"
 
+# Busybox additional configuration
+BR2_PACKAGE_BUSYBOX_CONFIG_FRAGMENT_FILES="board/knot/raspberrypi/busybox.conf"
+
 # KNoT packages
 BR2_PACKAGE_KNOT_PROTOCOL_LIB=y
 BR2_PACKAGE_KNOT_HAL_DRIVER=y
