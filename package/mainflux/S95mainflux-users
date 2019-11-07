@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Start mainflux users service
+#
+
+NAME=users
+DAEMON=/usr/local/mainflux/bin/users
+PID_FILE="/var/run/$NAME.pid"
+
+export `cat /usr/local/mainflux/mainflux.config`
+
+start() {
+        printf "Starting Mainflux Users Service:"
+        createdb -U postgres users
+        start-stop-daemon -S -b -m -q -c mainflux:mainflux -p $PID_FILE --exec $DAEMON
+        [ $? = 0 ] && echo "OK" || echo "FAIL"
+}
+
+stop() {
+        printf "Stopping Mainflux Users Service:"
+        start-stop-daemon -K -q -p $PID_FILE
+        rm $PID_FILE
+        echo "OK"
+}
+
+restart() {
+        stop
+        start
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
