@@ -2120,4 +2120,8 @@ menu "OpenThread"
 	source "package/wpantund/Config.in"
 endmenu
 
+menu "Mainflux"
+	source "package/mainflux/Config.in"
+endmenu
+
 endmenu
