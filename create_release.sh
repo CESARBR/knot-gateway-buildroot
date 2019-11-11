@@ -4,7 +4,7 @@ TMP_PATH=tmp
 CLONE_METHOD=git@github.com:
 
 KNOT_ORG=CESARBR
-KNOT_REPOS=(knot-cloud-source knot-gateway-webui \
+KNOT_REPOS=(knot-gateway-webui \
 knot-hal-source \
 knot-protocol-source \
 knot-service-source \
@@ -57,7 +57,6 @@ function showHelp() {
     echo "--service Applies tag into knot-service-source at specified hash, tag or branch."
     echo "--hal Applies tag into knot-hal-source at specified hash, tag or branch."
     echo "--nrf24 Applies tag into knot-network-nrf24 at specified hash, tag or branch."
-    echo "--fog Applies tag into knot-cloud-source at specified hash, tag or branch."
     echo "--connector Applies tag into knot-fog-connector at specified hash, tag or branch."
     echo "--web Applies tag into knot-gateway-webui at specified hash, tag or branch."
     echo "--cloud Applies tag into knot-cloud at specified hash, tag or branch."
@@ -71,12 +70,6 @@ function showHelp() {
 
 function changeTagBase() {
     case "$1" in
-        knot-cloud-source)
-        if [ ! -z "$FOG" ]; then
-            echo "Using $FOG on knot-cloud-source"
-            git checkout "$FOG"
-        fi
-        ;;
         knot-gateway-webui)
         if [ ! -z "$WEB" ]; then
             echo "Using $WEB on knot-gateway-webui"
@@ -195,10 +188,6 @@ while (( "$#" )); do
         NRF=$2
         shift 2
         ;;
-        --fog)
-        FOG=$2
-        shift 2
-        ;;
         --connector)
         CONN=$2
         shift 2
@@ -278,7 +267,6 @@ fi
 
 # TODO
 # Change KNOT_*_SITE in knot-*.mk files if --org is passed
-sed -i "/KNOT_FOG_VERSION/ s/=.*/= $TAG/g" ./package/knot-fog/knot-fog.mk
 sed -i "/KNOT_FOG_CONNECTOR_VERSION/ s/=.*/= $TAG/g" ./package/knot-fog-connector/knot-fog-connector.mk
 sed -i "/KNOT_WEB_VERSION/ s/=.*/= $TAG/g" ./package/knot-web/knot-web.mk
 sed -i "/KNOT_HAL_DRIVER_VERSION/ s/=.*/= $TAG/g" ./package/knot-hal-driver/knot-hal-driver.mk
