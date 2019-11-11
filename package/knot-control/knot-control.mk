@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_CONTROL_VERSION = KNOT-v02.01-rc01
+KNOT_CONTROL_VERSION = KNOT-v02.01-rc02
 KNOT_CONTROL_SITE = https://github.com/CESARBR/knot-gateway-control.git
 KNOT_CONTROL_SITE_METHOD = git
 KNOT_CONTROL_DEPENDENCIES = python-pika python-pymongo dbus-python python-daemon python-gobject python-lockfile python-setuptools
