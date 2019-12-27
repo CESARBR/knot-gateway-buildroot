@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_NETSETUP_VERSION = KNOT-v02.01-rc02
+KNOT_NETSETUP_VERSION = KNOT-v02.01
 KNOT_NETSETUP_SITE = https://github.com/CESARBR/knot-gateway-netsetup.git
 KNOT_NETSETUP_SITE_METHOD = git
 KNOT_NETSETUP_DEPENDENCIES = dbus-python python-daemon python-docutils python-gobject python-lockfile python-setuptools
