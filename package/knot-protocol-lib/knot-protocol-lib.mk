@@ -21,7 +21,7 @@ KNOT_SERVICE_APP_CONF_OPTS += \
 endif
 
 define KNOT_PROTOCOL_LIB_BOOTSTRAP
-	cd $(@D) &&  ./bootstrap 
+	cd $(@D) && ./bootstrap
 endef
 
 KNOT_PROTOCOL_LIB_POST_PATCH_HOOKS += KNOT_PROTOCOL_LIB_BOOTSTRAP
