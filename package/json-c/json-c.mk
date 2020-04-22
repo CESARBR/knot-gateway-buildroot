@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-JSON_C_VERSION = json-c-0.13.1-20180305
+JSON_C_VERSION = json-c-0.14-20200419
 JSON_C_SITE = $(call github,json-c,json-c,$(JSON_C_VERSION))
 JSON_C_INSTALL_STAGING = YES
 JSON_C_LICENSE = MIT
@@ -18,5 +18,4 @@ endef
 JSON_C_POST_EXTRACT_HOOKS += JSON_C_UPDATE_CONFIG_TIMESTAMP
 HOST_JSON_C_POST_EXTRACT_HOOKS += JSON_C_UPDATE_CONFIG_TIMESTAMP
 
-$(eval $(autotools-package))
-$(eval $(host-autotools-package))
+$(eval $(cmake-package))
