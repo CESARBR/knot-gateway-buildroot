@@ -90,6 +90,10 @@ done
 
 rm -rf "${GENIMAGE_TMP}"
 
+# Create a zero filled ext4 file to work as data dir on target
+dd if=/dev/zero of="${BINARIES_DIR}/data.ext4" bs=1M count=256
+mkfs.ext4 "${BINARIES_DIR}/data.ext4"
+
 genimage                           \
 	--rootpath "${TARGET_DIR}"     \
 	--tmppath "${GENIMAGE_TMP}"    \
