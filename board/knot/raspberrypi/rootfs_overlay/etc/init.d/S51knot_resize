@@ -1,0 +1,42 @@
+#!/bin/sh
+
+ETC_INIT="/etc/init.d/"
+ETC_KNOT="/etc/knot/"
+ETC_KNOT_INIT_FILES="${ETC_KNOT}/initS/"
+ETC_KNOT_DATA_FILE="${ETC_KNOT}/.data"
+KNOT_RESIZE_SCRIPT="${ETC_INIT}/S51knot_resize"
+TARGET_DEV="/dev/mmcblk0"
+TARGET_DEV_DATA_PART="${TARGET_DEV}p3"
+
+fdisk_command_str() {
+	str="d\n"		# Delete partition
+	str="${str}3\n"	# Partition number 3
+	str="${str}n\n"	# New partition
+	str="${str}p\n"	# Primary partition
+	str="${str}3\n"	# Partion number 3
+	str="${str}\n"	# Default, start immediately after preceding partition
+	str="${str}\n"	# Default, extend partition to end of disk
+	str="${str}w\n"	# Write the partition table
+	printf $str
+}
+
+resize_disk() {
+	fdisk_command_str | fdisk "${TARGET_DEV}"
+}
+
+if [ ! -f "${ETC_KNOT_DATA_FILE}" ] # Change partition table
+then
+	resize_disk
+	touch "${ETC_KNOT_DATA_FILE}"
+elif [ ! -s "${ETC_KNOT_DATA_FILE}" ] # Resize file system for data partition
+then
+	# The wildcard * cannot be inside quotes or it won't work as expected
+	cp -v "${ETC_KNOT_INIT_FILES}"* "${ETC_INIT}" >> "${ETC_KNOT_DATA_FILE}"
+	resize2fs "${TARGET_DEV_DATA_PART}"
+	echo $(date) >> "${ETC_KNOT_DATA_FILE}"
+else # Remove file from init.d
+	echo "KNoT Resized" >> "${ETC_KNOT_DATA_FILE}"
+	mv "${KNOT_RESIZE_SCRIPT}" "${ETC_KNOT}"
+fi
+
+reboot

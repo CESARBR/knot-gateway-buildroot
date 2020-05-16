@@ -65,7 +65,7 @@ define MONGODB_INSTALL_TARGET_CMDS
 endef
 
 define MONGODB_INSTALL_INIT_SCRIPT
-	$(INSTALL) -D -m 0755 $(MONGODB_PKGDIR)/S55mongod $(TARGET_DIR)/etc/init.d/
+	$(INSTALL) -D -m 0755 $(MONGODB_PKGDIR)/S55mongod $(TARGET_DIR)/etc/knot/initS/S55mongod
 	mkdir -p $(TARGET_DIR)/usr/local/
 	mkdir -p $(TARGET_DIR)/usr/local/bin/
 	$(INSTALL) -D -m 0755 $(MONGODB_PKGDIR)/mongod $(TARGET_DIR)/usr/local/bin/

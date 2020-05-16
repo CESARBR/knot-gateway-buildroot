@@ -18,7 +18,7 @@ endef
 
 define KNOT_WEB_INSTALL_INIT_SCRIPT
 	$(INSTALL) -D -m 0755 $(KNOT_WEB_PKGDIR)/knot-web $(TARGET_DIR)/usr/local/bin/
-	$(INSTALL) -D -m 0755 $(KNOT_WEB_PKGDIR)/S65knot-web-daemon $(TARGET_DIR)/etc/init.d/
+	$(INSTALL) -D -m 0755 $(KNOT_WEB_PKGDIR)/S65knot-web-daemon $(TARGET_DIR)/etc/knot/initS/S65knot-web-daemon
 endef
 
 KNOT_WEB_POST_INSTALL_TARGET_HOOKS += KNOT_WEB_INSTALL_INIT_SCRIPT

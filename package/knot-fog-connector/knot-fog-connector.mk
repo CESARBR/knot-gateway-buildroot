@@ -18,7 +18,7 @@ endef
 
 define KNOT_FOG_CONNECTOR_INSTALL_INIT_SCRIPT
 	$(INSTALL) -D -m 0755 $(KNOT_FOG_CONNECTOR_PKGDIR)/knot-connector $(TARGET_DIR)/usr/local/bin/
-	$(INSTALL) -D -m 0755 $(KNOT_FOG_CONNECTOR_PKGDIR)/S80knot-fog-connector-daemon $(TARGET_DIR)/etc/init.d/
+	$(INSTALL) -D -m 0755 $(KNOT_FOG_CONNECTOR_PKGDIR)/S80knot-fog-connector-daemon $(TARGET_DIR)/etc/knot/initS/S80knot-fog-connector-daemon
 endef
 
 KNOT_FOG_CONNECTOR_POST_INSTALL_TARGET_HOOKS += KNOT_FOG_CONNECTOR_INSTALL_INIT_SCRIPT

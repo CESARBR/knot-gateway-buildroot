@@ -40,7 +40,7 @@ WPANTUND_PRE_CONFIGURE_HOOKS += WPANTUND_BOOTSTRAP
 define WPANTUND_INSTALL_INIT_SCRIPT
 	$(SED) '/Config:NCP:SocketPath "\/dev/i Config:NCP:SocketPath "/dev/ttyACM0"' $(TARGET_DIR)/etc/wpantund.conf
 	$(INSTALL) -D -m 0755 $(WPANTUND_PKGDIR)/ncp_state_notifier $(TARGET_DIR)/usr/sbin/
-	$(INSTALL) -D -m 0755 $(WPANTUND_PKGDIR)/S80wpantund $(TARGET_DIR)/etc/init.d/
+	$(INSTALL) -D -m 0755 $(WPANTUND_PKGDIR)/S80wpantund $(TARGET_DIR)/etc/knot/initS/S80wpantund
 	$(INSTALL) -D -m 0755 $(@D)/src/wpantund/wpantund $(TARGET_DIR)/usr/local/bin/
 endef
 
