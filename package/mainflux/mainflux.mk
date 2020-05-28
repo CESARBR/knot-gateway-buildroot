@@ -12,7 +12,7 @@ MAINFLUX_LICENSE_FILES = LICENSE
 MAINFLUX_BUILD_TARGETS = cmd/users
 
 define MAINFLUX_INSTALL_INIT_SCRIPT
-	$(INSTALL) -D -m 0755 $(MAINFLUX_PKGDIR)/S95mainflux-users $(TARGET_DIR)/etc/init.d/
+	$(INSTALL) -D -m 0755 $(MAINFLUX_PKGDIR)/S95mainflux-users $(TARGET_DIR)/etc/knot/initS/S95mainflux-users
 endef
 
 define MAINFLUX_INSTALL_TARGET_CMDS

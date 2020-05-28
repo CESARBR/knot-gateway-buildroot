@@ -12,7 +12,7 @@ KNOT_NETSETUP_SETUP_TYPE = setuptools
 
 define KNOT_NETSETUP_INSTALL_INIT_SCRIPT
 	ln -fs /usr/bin/netsetup $(TARGET_DIR)/usr/local/bin/netsetup
-	$(INSTALL) -D -m 0755 $(KNOT_NETSETUP_PKGDIR)/S85netsetup-daemon $(TARGET_DIR)/etc/init.d/
+	$(INSTALL) -D -m 0755 $(KNOT_NETSETUP_PKGDIR)/S85netsetup-daemon $(TARGET_DIR)/etc/knot/initS/S85netsetup-daemon
 	$(INSTALL) -D -m 0644 $(@D)/netsetup.conf $(TARGET_DIR)/etc/dbus-1/system.d/
 endef
 
