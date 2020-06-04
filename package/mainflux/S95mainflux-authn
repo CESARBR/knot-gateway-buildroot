@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# Start mainflux authentication service
+#
+
+NAME=authn
+DIR=/usr/local/mainflux
+PID_FILE="/var/run/$NAME.pid"
+
+set -a
+source $DIR/authn.conf
+
+start() {
+        printf "Starting Mainflux Authenticator Service:"
+        createdb -U postgres authn
+        start-stop-daemon -S -b -m -q -c mainflux:mainflux -p $PID_FILE --exec $DIR/bin/$NAME
+        [ $? = 0 ] && echo "OK" || echo "FAIL"
+}
+
+stop() {
+        printf "Stopping Mainflux Authenticator Service:"
+        start-stop-daemon -K -q -p $PID_FILE
+        rm $PID_FILE
+        echo "OK"
+}
+
+restart() {
+        stop
+        start
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
