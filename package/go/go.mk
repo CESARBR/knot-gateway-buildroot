@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-GO_VERSION = 1.10.2
-GO_SITE = https://storage.googleapis.com/golang
+GO_VERSION = 1.13.8
+GO_SITE = https://dl.google.com/go
 GO_SOURCE = go$(GO_VERSION).src.tar.gz
 
 GO_LICENSE = BSD-3-Clause
