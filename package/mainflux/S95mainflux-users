@@ -4,15 +4,16 @@
 #
 
 NAME=users
-DAEMON=/usr/local/mainflux/bin/users
+DIR=/usr/local/mainflux
 PID_FILE="/var/run/$NAME.pid"
 
-export `cat /usr/local/mainflux/mainflux.config`
+set -a
+source $DIR/users.conf
 
 start() {
         printf "Starting Mainflux Users Service:"
         createdb -U postgres users
-        start-stop-daemon -S -b -m -q -c mainflux:mainflux -p $PID_FILE --exec $DAEMON
+        start-stop-daemon -S -b -m -q -c mainflux:mainflux -p $PID_FILE --exec $DIR/bin/$NAME
         [ $? = 0 ] && echo "OK" || echo "FAIL"
 }
 
