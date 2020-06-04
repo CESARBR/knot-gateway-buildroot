@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-MAINFLUX_VERSION = master
+MAINFLUX_VERSION = 0.10.0
 MAINFLUX_SITE = $(call github,mainflux,mainflux,$(MAINFLUX_VERSION))
 MAINFLUX_LICENSE = Apache-2.0
 MAINFLUX_LICENSE_FILES = LICENSE
