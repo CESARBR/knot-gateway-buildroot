@@ -1,0 +1,10 @@
+config BR2_PACKAGE_KNOT_STORAGE
+    bool "knot-storage"
+    depends on BR2_PACKAGE_HOST_GO_ARCH_SUPPORTS
+    depends on BR2_PACKAGE_HOST_GO_CGO_LINKING_SUPPORTS
+    depends on BR2_PACKAGE_RABBITMQ_SERVER
+    depends on BR2_PACKAGE_MONGODB
+    depends on BR2_PACKAGE_KNOT_BABELTOWER
+    help
+	Stores the sensor data sent by the things registered on KNoT Cloud.
+	https://github.com/CESARBR/knot-cloud-storage

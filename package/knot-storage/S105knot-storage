@@ -1,0 +1,42 @@
+NAME=storage
+DIR=/usr/local/storage
+PID_FILE="/var/run/$NAME.pid"
+
+set -a
+source ${DIR}/storage.conf
+
+start() {
+        printf "Starting KNoT storage Service:"
+        cd $DIR
+        start-stop-daemon -S -b -m -q -c knot:knot -p $PID_FILE --exec $DIR/$NAME
+        [ $? = 0 ] && echo "OK" || echo "FAIL"
+}
+
+stop() {
+        printf "Stopping KNoT storage Service:"
+        start-stop-daemon -K -q -p $PID_FILE
+        rm $PID_FILE
+        echo "OK"
+}
+
+restart() {
+        stop
+        start
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
