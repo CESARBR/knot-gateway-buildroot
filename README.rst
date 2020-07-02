@@ -61,6 +61,13 @@ You should base your work on this defconfig:
    - ``knot_raspberrypi3_defconfig``
    - ``knot_raspberrypi0w_defconfig``
 
+   Additionally, the following defconfigs are available to work with KNoT v03:
+
+   - ``knot_v03_rpi3_defconfig``
+   - ``knot_v03_rpi0w_defconfig``
+
+   **Note**: The KNoT v03 is still not compatible with nRF's Things.
+
 #. Menu Configuration
 
    You can access and select extra packages you wish to compile with KNoT Linux
