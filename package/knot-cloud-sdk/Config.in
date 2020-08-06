@@ -1,0 +1,10 @@
+config BR2_PACKAGE_KNOT_CLOUD_SDK
+	bool "knot-cloud-sdk"
+	select BR2_PACKAGE_LIBELL
+	select BR2_PACKAGE_JSON_C
+	select BR2_PACKAGE_RABBITMQ_C
+	select BR2_PACKAGE_KNOT_PROTOCOL_LIB
+	help
+	  KNoT Cloud SDK in C is part of the KNoT project.
+	  It is a client-side library that provides an AMQP
+	  abstraction to the KNoT Cloud for C applications.
