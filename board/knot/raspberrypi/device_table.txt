@@ -1,6 +1,7 @@
 # Device table for KNoT packages
 #
 # <name>				<type>	<mode>    <uid>      <gid>    <major>  <minor>	<start>	<inc>	<count>
+/etc/knot                               r	755	  knot       knot	-	-	-	-	-
 /usr/local/bin/knot-fog-connector       r	755	  knot       knot	-	-	-	-	-
 /usr/local/rabbitmq-server              r	755	  rabbitmq   rabbitmq	-	-	-	-	-
 /data/rabbitmq                          r	755	  rabbitmq   rabbitmq	-	-	-	-	-
