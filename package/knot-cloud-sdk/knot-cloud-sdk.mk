@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_CLOUD_SDK_VERSION = 1bdb2dd9800b4840d3152ca0435497e115f995ff
+KNOT_CLOUD_SDK_VERSION = KNOT-v03.00-rc03
 KNOT_CLOUD_SDK_SITE = https://github.com/CESARBR/knot-cloud-sdk-c.git
 KNOT_CLOUD_SDK_SITE_METHOD = git
 KNOT_CLOUD_SDK_INSTALL_STAGING = YES

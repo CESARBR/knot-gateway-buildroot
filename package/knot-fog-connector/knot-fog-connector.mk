@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_FOG_CONNECTOR_VERSION = KNOT-v03.00-rc01
+KNOT_FOG_CONNECTOR_VERSION = KNOT-v03.00-rc03
 KNOT_FOG_CONNECTOR_SITE_METHOD = git
 KNOT_FOG_CONNECTOR_SITE = https://github.com/CESARBR/knot-fog-connector.git
 KNOT_FOG_CONNECTOR_DEPENDENCIES = nodejs
