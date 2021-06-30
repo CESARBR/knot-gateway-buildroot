@@ -17,6 +17,16 @@ POSTGRESQL_CONF_ENV = \
 	pgac_cv_snprintf_size_t_support=yes
 POSTGRESQL_CONF_OPTS = --disable-rpath
 
+# PostgreSQL comes with some additional modules that can be found in the `contrib` directory.
+# Some of these modules are plugin features that are not part of the core PostgreSQL system.
+# When building from the sources, these `contrib` modules are not built automatically, unless
+# if it is built with the `world` target.
+# As some of these plugins (pgcrypto and ltree) are need for some applications in BR (mainflux),
+# the following lines build them together with the source.
+# Ref: https://www.postgresql.org/docs/10/contrib.html
+POSTGRESQL_MAKE_OPTS = world
+POSTGRESQL_INSTALL_TARGET_OPTS = DESTDIR=$(TARGET_DIR) install-world
+
 ifeq ($(BR2_TOOLCHAIN_USES_UCLIBC),y)
 # PostgreSQL does not build against uClibc with locales
 # enabled, due to an uClibc bug, see
