@@ -3,16 +3,16 @@
 # Start mainflux authentication service
 #
 
-NAME=authn
+NAME=auth
 DIR=/usr/local/mainflux
 PID_FILE="/var/run/$NAME.pid"
 
 set -a
-source $DIR/authn.conf
+source $DIR/auth.conf
 
 start() {
         printf "Starting Mainflux Authenticator Service:"
-        createdb -U postgres authn
+        createdb -U postgres auth
         start-stop-daemon -S -b -m -q -c mainflux:mainflux -p $PID_FILE --exec $DIR/bin/$NAME
         [ $? = 0 ] && echo "OK" || echo "FAIL"
 }
