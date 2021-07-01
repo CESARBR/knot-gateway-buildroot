@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-KNOT_VIRTUALTHING_VERSION = KNOT-v03.00-rc03
+KNOT_VIRTUALTHING_VERSION = KNOT-v03.00-rc04
 KNOT_VIRTUALTHING_SITE = https://github.com/CESARBR/knot-virtualthing.git
 KNOT_VIRTUALTHING_SITE_METHOD = git
 KNOT_VIRTUALTHING_INSTALL_STAGING = NO
