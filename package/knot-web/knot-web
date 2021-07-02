@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Run KNoT-fog
+# Run KNoT WebUI
 #
 
 cd /usr/local/bin/knot-web-*/

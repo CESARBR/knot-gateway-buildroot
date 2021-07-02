@@ -275,7 +275,7 @@ sed -i "/KNOT_PROTOCOL_LIB_VERSION/ s/=.*/= $TAG/g" ./package/knot-protocol-lib/
 sed -i "/KNOT_SERVICE_APP_VERSION/ s/=.*/= $TAG/g" ./package/knot-service-app/knot-service-app.mk
 sed -i "/KNOT_NETSETUP_VERSION/ s/=.*/= $TAG/g" ./package/knot-netsetup/knot-netsetup.mk
 sed -i "/KNOT_CONTROL_VERSION/ s/=.*/= $TAG/g" ./package/knot-control/knot-control.mk
-git add package/knot-fog/knot-fog.mk package/knot-web/knot-web.mk \
+git add package/knot-web/knot-web.mk \
 package/knot-hal-driver/knot-hal-driver.mk \
 package/knot-protocol-lib/knot-protocol-lib.mk \
 package/knot-service-app/knot-service-app.mk \
